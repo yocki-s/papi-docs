@@ -1,4 +1,4 @@
-[Daftar Isi](README.md)
+[Daftar Isi](../README.md)
 
 1. Pengenalan Sistem Pembayaran Veritrans
 =========================================
