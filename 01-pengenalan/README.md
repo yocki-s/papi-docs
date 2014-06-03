@@ -11,8 +11,40 @@ Veritrans Indonesia (PT. Midtrans) merupakan perusahaan penyedia layanan pembaya
 
 Apakah Merchant bisa mengimplementasikan pembayaran online sendiri tanpa harus menggunakan Veritrans Indonesia? Yup, tentu bisa, tapi saya sangat tidak rekomendasikan. Kenapa? karena setiap metode pembayaran memiliki spesifikasi sistem yang berbeda-beda, dan belum lagi banyaknya sertifikasi yang harus dimiliki Merchant untuk metode pembayaran tertentu (seperti PCI DSS untuk kartu kredit), hal ini bukannya mempercepat integrasi, malah memperlambat, bahkan mempersulit proses integrasi. Jika Merchant menggunakan Online Payment Gateway seperti Veritrans Indonesia, Merchant dapat dengan mudah mengintegrasikan sistem pembayaran online, karena semua kerumitan yang terjadi di belakangnya sudah ditangani oleh pihak Veritrans Indonesia, jadi Merchant tinggal duduk santai saja, enaaaakkkk :D
 
+Veritrans Indonesia memiliki sebuah konsep ONE MESSAGE, ONE RESPONSE and ONE ENDPOINT untuk sistem pembayaran online mereka. 
+
+- <b>ONE MESSAGE</b> artinya, untuk melakukan metode pembayaran apapun, Merchant hanya menggunakan satu format pesan yang sama. 
+- <b>ONE RESPONSE</b> artinya, semua metode pembayaran apapun yang dilakukan oleh Merchant, maka response yang diberikan oleh sistem Veritrans Indonesia akan menggunakan format pesan yang sama.
+- <b>ONE ENDPOINT</b> artinya, semua metode pembayaran apapun yang dilakukan menggunakan satu endpoint (pintu) yang sama.
+
+Hal ini menjadikan Merchant akan lebih mudah melakukan integrasi dengan Veritrans Indonesia, karena semua format pesan untuk metode pembayaran apapun sama. Semua kompleksitas yang terjadi dibelakang akan ditangani oleh sistem Veritrans Indonesia, tanpa harus diketahui oleh Merchant.
+
 ## 1.2 Metode Pembayaran
 
+Apa saja metode pembayaran yang didukung oleh Veritrans Indonesia? Berikut adalah daftar metode pembayaran yang didukung oleh Veritrans Indonesia :
 
+- Kartu Kredit
+	- Normal
+	- Cicilan
+	- Poin
+	- PreAuthorize
+	- 3D Secure
+	- Recurring (One Click Button)
+	- Two Click Button
+- Internet Banking
+	- CIMB Clicks
+	- Mandiri Clickpay
+	- BRI Epay
+	- BCA KlikPay
+	- KlikBCA
+- Virtual Account (ATM)
+	- Permata
+	- BII
+- Mobile Payment
+	- XL Tunai
+	- Telkomsel TCash
+	
+Wow, banyak sekali! Jika Merchant menggunakan Veritrans Indonesia sebagai Online Payment Gateway-nya, maka semua metode pembayaran tersebut dapat digunakan hanya menggunakan satu pintu (API)
 
 ## 1.3 Cara Kerja Payment Gateway
+
