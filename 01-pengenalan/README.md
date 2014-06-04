@@ -48,8 +48,67 @@ Wow, banyak sekali! Jika Merchant menggunakan Veritrans Indonesia sebagai Online
 
 ## 1.3 Cara Kerja Payment Gateway
 
+Jika Anda masih bingung tentang cara kerja Online Payment Gateway yang terintegrasi dengan Merchant, yuk kita bahas :)
 
+Seandainya Merchant melakukan integrasi secara langsung dengan Payment Provider (penyedia metode pembayaran), maka seperti ini diagram nya :
+
+```
+
+MERCHANT =======SOAP======> PAYMENT PROVIDER
+
+
+```
+
+Namun bayangkan jika Merchant melakukan integrasi dengan beberapa Payment Provider, maka diagramnya akan terlihat seperti ini :
+
+```
+
+MERCHANT ==||=====SOAP======> PAYMENT PROVIDER 1
+           ||
+           ||=====RESTful===> PAYMENT PROVIDER 2
+           ||
+           ||=====SOCKET====> PAYMENT PROVIDER 3
+           ||
+           ||=====ISOxxx====> PAYMENT PROVIDER 4
+
+```
+
+Merchant perlu implementasi secara manual untuk melakukan integrasi ke semua Payment Provider. Namun hal ini berbeda jika Merchant menggunakan Payment Gateway untuk integrasi ke semua Payment Provider.
+
+```
+
+MERCHANT ====RESTful===> PAYMENT GATEWAY ==||=====SOAP======> PAYMENT PROVIDER 1
+                                           ||
+                                           ||=====RESTful===> PAYMENT PROVIDER 2
+                                           ||
+                                           ||=====SOCKET====> PAYMENT PROVIDER 3
+                                           ||
+                                           ||=====ISOxxx====> PAYMENT PROVIDER 4
+
+```
+
+Bahkan seandainya ada penambahan Payment Provider baru di sistem Payment Gateway, Merchant tidak perlu melakukan development lagi, karena semua sudah dilakukan di sistem Payment Gateway.
+
+```
+
+MERCHANT ====RESTful===> PAYMENT GATEWAY ==||=====SOAP======> PAYMENT PROVIDER 1
+                                           ||
+                                           ||=====RESTful===> PAYMENT PROVIDER 2
+                                           ||
+                                           ||=====SOCKET====> PAYMENT PROVIDER 3
+                                           ||
+                                           ||=====ISOxxx====> PAYMENT PROVIDER 4
+                                           ||
+                                           ||=====??????====> PAYMENT PROVIDER ...
+
+```
+
+Intinya Payment Gateway bertugas untuk mengirim data transaksi (tagihan Merchant ke Pelanggan) ke Payment Provider yang telah ditentukan, sehingga Merchant tidak perlu pusing lagi dengan cara pembayaran & metode pembayaran yang akan dilakukan pelanggan. Merchant hanya perlu mengirim data transaksi, dan menunggu Payment Gateway melakukan konfirmasi apakah pembayaran dari pelanggan berhasil atau gagal.
 
 ## 1.4 Merchant Veritrans Indonesia
 
 Sampai saat ini sudah banyak sekali Merchant yang telah melakukan integrasi dengan Veritrans Indonesia, diantaranya Rakuten Belanja Online, BizNet, Blitz Megaplex, Jeruk Nipis, BerryBenka, Traveloka, Sribu.com, Teknoup, Wayang, Loket dan [masih banyak yang lainnya](https://www.veritrans.co.id/portfolio.html).
+
+## 1.5 Veritrans Fraud Detection System
+
+Salah satu kelebihan Veritrans Indonesia adalah sistem Veritrans telah terintegrasi dengan Fraud Detection System, yaitu sistem pintar yang bisa mencoba menganalisa transaksi untuk ditentukan apakah transaksi tersebut dicurigai mengandung unsur penipuan atau tidak. FDS (Fraud Detection System) Veritrans Indonesia berjalan secara Real Time, sehingga Merchant dapat melihat hasilnya langsung ketika transaksi dilakukan.
