@@ -139,6 +139,100 @@ Yuk kita bahas satu per satu, apa data yang diperlukan untuk melakukan transaksi
 | order_id     | String(50) | Id pembayaran customer                                           |
 | gross_amount | Long       | Total harga transaksi pembayaran yang akan dibayar oleh customer |
 
+### 3.2.3 Item Details
+
+```json
+{
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 3,
+          "name": "Bakso"
+        },
+        {
+          "id": "ITEM2",
+          "price": 8000,
+          "quantity": 2,
+          "name": "Mie Ayam"
+        }
+      ]
+}
+```
+
+```item_details``` merupakan kumpulan (Array) produk yang dibeli oleh pelanggan yang melakukan transaksi.
+
+| Atribut  | Tipe Data  | Keterangan    |
+|----------|------------|---------------|
+| id       | String(50) | Id produk     |
+| price    | Long       | Harga produk  |
+| quantity | Integer    | Jumlah produk |
+| name     | String(50) | Nama produk   |
+
+### 3.2.4 Customer Details
+
+```json
+{
+      "customer_details": {
+        "first_name" : "Eko",
+        "last_name" : "Khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@gmail.com",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345"
+        },
+        "shipping_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345"
+        }
+      }
+}
+```
+
+```customers_details``` merupakan data pelanggan yang melakukan transaksi.
+
+| Atribut          | Tipe Data   | Keterangan                                                                                                         |
+|------------------|-------------|--------------------------------------------------------------------------------------------------------------------|
+| first_name       | String(20)  | Nama depan pelanggan                                                                                               |
+| last_name        | String(20)  | Nama belakang pelanggan                                                                                            |
+| email            | String(45)  | Email pelanggan, format email harus valid                                                                          |
+| phone            | String(19)  | Nomor telpon pelanggan, format nomor harus valid, hanya diperbolehkan karaketer 0-9, dan tanda + - ( ) dan ```spasi``` |
+| billing_address  | JSON Object | Billing address pelanggan                                                                                          |
+| shipping_address | JSON Object | Shipping address pelanggan                                                                                         |
+
+#### 3.2.4.1 Billing Address dan Shipping Address
+
+Khusus untuk transaksi dengan ```payment_type``` kartu kredit, maka diperlukan data customers tambahan, yaitu ```billing_address``` dan ```shipping_address```.
+
+| Atribut      | Tipe Data   | Keterangan                                                                                                         |
+|--------------|-------------|--------------------------------------------------------------------------------------------------------------------|
+| first_name   | String(20)  | Nama depan pelanggan                                                                                               |
+| last_name    | String(20)  | Nama belakang pelanggan                                                                                            |
+| phone        | String(19)  | Nomor telpon pelanggan, format nomor harus valid, hanya diperbolehkan karaketer 0-9, dan tanda + - ( ) dan [spasi] |
+| address      | String(200) | Alamat pelanggan                                                                                                   |
+| city         | String(20)  | Kota pelanggan                                                                                                     |
+| postal_code  | String(10)  | Kode pos pelanggan                                                                                                 |
+| country_code | String(10)  | Kode negara sesuai dengan [ISO 3166-1_alpha-3](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)                    |
+
+### 3.2.5 Data Apa Saja yang Wajib Dikirim?
+
+Begitu banyak data yang diperlukan, apa saja yang wajib dikirim dan apa saja yang tidak wajib dikirim ke Veritrans Payment API?
+
+![JSON Format](../images/image-005.png)
+
+- Semua yang berwarna <font color="red">merah</font> adalah atribut yang wajib dikirim oleh merchant untuk melakukan transaksi di Payment API.
+- Semua yang berwarna <font color="blue">biru</font> adalah atribut yang wajib dikirim khusus untuk tipe pembayaran kartu kredit
+- Semua yang berwarna <font color="black">hitam</font> adalah atribut yang tidak wajib (optional) dikirim oleh merchant, namun direkomendasikan untuk dikirim
+
 ## 3.3 Payment Response
 
 ## 3.4 Transaction Status
