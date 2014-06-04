@@ -1,4 +1,4 @@
-[Daftar Isi](../README.md)
+<== [Daftar Isi](../README.md)
 
 1. Pengenalan Sistem Pembayaran Veritrans
 =========================================
@@ -112,3 +112,5 @@ Sampai saat ini sudah banyak sekali Merchant yang telah melakukan integrasi deng
 ## 1.5 Veritrans Fraud Detection System
 
 Salah satu kelebihan Veritrans Indonesia adalah sistem Veritrans telah terintegrasi dengan Fraud Detection System, yaitu sistem pintar yang bisa mencoba menganalisa transaksi untuk ditentukan apakah transaksi tersebut dicurigai mengandung unsur penipuan atau tidak. FDS (Fraud Detection System) Veritrans Indonesia berjalan secara Real Time, sehingga Merchant dapat melihat hasilnya langsung ketika transaksi dilakukan.
+
+==> [Pengenalan Sistem Sandbox Veritrans](../02-sandbox/README.md)
