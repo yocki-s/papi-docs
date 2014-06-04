@@ -365,4 +365,14 @@ Status code 5xx berarti terdapat kesalahan di sistem Veritrans Payment API, misa
 
 ## 3.8 Menggunakan RestClient
 
+Untuk mencoba melakukan transaksi, saya sarankan menggunakan aplikasi Rest Client dibandingkan langsung menggunakan bahasa pemrograman seperti Java, PHP dan yang lainnya. Dengan menggunakan Rest Client, kita bisa tahu, apa yang terjadi saat proses request server-to-server dari Merchant ke Veritrans Payment API.
+
+### 3.8.1 POSTMAN
+
+Saya menyarankan untuk menggunakan plugin Google Chrome yang bernama POSTMAN sebagai Rest Client yang bisa kita gunakan untuk mencoba melakukan transaksi ke Veritrans Payment API. Kita bisa download plugin-nya secara gratis [disini](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?utm_source=chrome-ntp-icon).
+
+![POSTMAN](../images/image-006.png)
+
+### 3.8.2 Melakukan Transaksi Menggunakan POSTMAN
+
 ==> [Transaksi Kartu Kredit](../04-kartu-kredit/README.md)
