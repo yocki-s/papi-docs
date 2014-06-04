@@ -275,11 +275,93 @@ Untuk transaksi sukses, Merchant akan selalu mendapatkan ```transaction_id``` da
 
 ## 3.4 Transaction Status
 
+Setiap transaksi yang dikirim oleh Merchant ke Veritrans Payment API, maka akan memiliki ```transaction_status``` (Status Transaksi). Status transaksi digunakan untuk mengetahui apakah sebuah transaksi berhasil atau gagal, atau bahkan belum selesai dilakukan oleh pelanggan. Berikut adalah daftar ```transaction_status``` yang ada pada Veritrans Payment API :
+
+- <b>authorize</b>
+- <b>capture</b>
+- <b>deny</b>
+- <b>pending</b>
+- <b>settlement</b>
+- <b>cancel</b>
+- <b>refund</b>
+- <b>expire</b>
+
 ## 3.5 Fraud Status
+
+- <b>accept</b>
+- <b>deny</b>
+- <b>challenge</b>
+- <b>noscore</b>
 
 ## 3.6 Payment Type
 
+- <b>credit_card</b>
+- <b>bca_klikpay</b>
+- <b>bca_klikbca</b>
+- <b>mandiri_clickpay</b>
+- <b>cimb_clicks</b>
+- <b>bri_epay</b>
+- <b>bii</b>
+- <b>permata</b>
+- <b>xl_tunai</b>
+- <b>telkomsel_cash</b>
+- <b>vtweb</b>
+- <b>vtlink</b>
+
 ## 3.7 Status Code
+
+Status code di Veritrans Payment API terbagi menjadi beberapa bagian, yaitu; 2xx, 3xx, 4xx dan 5xx.
+
+### 3.7.1 Status Code 2xx
+
+Status code 2xx berarti transaksi berjalan normal, tidak terdapat masalah ataupun kesalahan yang terjadi selama transaksi berlangsung.
+
+| Status Code | Keterangan                                                                                                                                                                      |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 200         | OK, request is success, and transaction is success (authorize, capture, settlement, cancel, refund, get order, approve challenge transactions), accepted by Veritrans and bank. |
+| 201         | Pending, transaction is success but the processing has not been completed, example, challenge transaction and pending transaction.                                              |
+| 202         | Denied, request is success but transaction is denied by bank or Veritrans fraud detection system.                                                                               |
+
+### 3.7.2 Status Code 3xx
+
+Status code 3xx berarti endpoint (url) yang digunakan sudah berubah dan tidak akan digunakan lagi.
+
+| Status Code | Keterangan                                                                      |
+|-------------|---------------------------------------------------------------------------------|
+| 300         | Move Permanently, this and all future request should be directed to the new URL |
+
+### 3.7.3 Status Code 4xx
+
+Status code 4xx berarti terdapat kesalahan dari sisi Merchant, misal saja Merchant salah mengirim format data atau proses autentikasi gagal karena Merchant salah mengirim Server Key.
+
+| Status Code | Keterangan                                                                                                                            |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| 400         | Validation Error, merchant send bad request dataexample; validation error, invalid transaction type, invalid credit card format, etc. |
+| 401         | Access denied due to unauthorized transaction, please check client key or server key                                                  |
+| 402         | Merchant doesn't have access for this payment type                                                                                    |
+| 403         | The requested resource is only capable of generating content not acceptable according to the accept headers sent in the request       |
+| 404         | The requested resource is not found                                                                                                   |
+| 405         | Http method is not allowed                                                                                                            |
+| 406         | Merchant charges the same order id more than once or transaction has been paid                                                        |
+| 407         | Resource is no longer available and will not be available again                                                                       |
+| 408         | Merchant sends the wrong data type                                                                                                    |
+| 409         | Merchant has sent too many transactions for the same card number                                                                      |
+| 410         | Merchant account is deactivated or not active for a long period                                                                       |
+| 411         | Token id is missing, invalid, or timed out                                                                                            |
+| 412         | Merchant cannot modify status of the transaction                                                                                      |
+| 413         | The request cannot be processed due to malformed syntax in the request body                                                           |
+
+### 3.7.4 Status Code 5xx
+
+Status code 5xx berarti terdapat kesalahan di sistem Veritrans Payment API, misal saja koneksi ke Payment Provider sedang bermasalah.
+
+| Status Code | Keterangan                                                                                             |
+|-------------|--------------------------------------------------------------------------------------------------------|
+| 500         | Sorry our internal system has experienced an internal error, we will fix it as soon as possible        |
+| 501         | The feature has not finished yet, it will be available soon                                            |
+| 502         | Bank Exception, system can not connect to bank                                                         |
+| 503         | Sorry our gateway system has experienced an internal error, we will fix it as soon as possible         |
+| 504         | Sorry our fraud detection system has experienced an internal error, we will fix it as soon as possible |
 
 ## 3.8 Menggunakan RestClient
 
