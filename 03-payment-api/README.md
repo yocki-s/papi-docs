@@ -379,6 +379,56 @@ Sekarang kita akan coba melakukan sebuah transaksi dengan metode pembayaran ```m
 
 Masukkan Server Key ke bagian Basic Auth di POSTMAN, lalu klik tombol [Refresh Headers] untuk mengubah Server Key menjadi Base 64. Dan tambahkan Content-Type dan Accept application/json di request nya; seperti terlihat digambar berikut.
 
+![Contoh Charge Menggunakan POSTMAN](../images/image-007.png)
 
+Untuk melakukan transaksi pembayaran (Charge), HTTP Method yang digunakan adalah POST dan endpoint (url) nya adalah https://api.sandbox.veritrans.co.id/v2/charge. Silahkan gunakan body request seperti JSON berikut :
+
+```json
+{
+      "payment_type": "mandiri_clickpay",
+      "transaction_details": {
+        "order_id": "1388998298219",
+        "gross_amount": 2500
+      },
+      "item_details": [
+        {
+          "id": "1388998298204",
+          "price": 250,
+          "quantity": 10,
+          "name": "Mie Ayam Komplit"
+        }
+      ],
+      "customer_details": {
+        "email": "eko.khannedy@veritrans.co.id",
+        "first_name": "Eko Kurniawan",
+        "last_name": "Khannedy",
+        "phone": "+6281 1234 1234"
+      },
+      "mandiri_clickpay": {
+        "card_number": "4111111111111111",
+        "input1": "1111111111",
+        "input2": "2500",
+        "input3": "00000",
+        "token": "000000"
+      }
+    }
+```
+
+Coba lakukan transaksi dengan mengklik tombol Send, maka data transaksi tersebut akan dikirim ke Veritrans Payment API. Veritrans Payment API akan membalas dengan hasil response misal sebagai berikut :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Mandiri Clickpay transaction is successful",
+    "transaction_id": "5278f252-f1ed-41a5-950a-1b188c9cadde",
+    "order_id": "1388998298219",
+    "payment_type": "mandiri_clickpay",
+    "transaction_time": "2014-06-04 18:59:18",
+    "transaction_status": "settlement",
+    "gross_amount": "2500.00"
+}
+```
+
+Jika Anda masih bingung tentang JSON request untuk metode pembayaran Mandiri ClickPay, nanti akan dibahas di BAB 6. Internet Banking.
 
 ==> [Transaksi Kartu Kredit](../04-kartu-kredit/README.md)
