@@ -13,19 +13,19 @@ MAP (Merchant Administration Portal) adalah website yang telah disediakan oleh V
 
 ### 2.1.1 Dashboard
 
-![MAP Dashboard](../images/image-001.jpg)
+![MAP Dashboard](../images/image-001.png)
 
 Pada bagian dashboard MAP, kita dapat melihat summary dari total transaksi yang telah terjadi.
 
 ### 2.1.2 Transaction
 
-![MAP Transactions](../images/image-002.jpg)
+![MAP Transactions](../images/image-002.png)
 
 Pada bagian transactions MAP, kita dapat melihat semua detail dari transaksi yang telah dikirim oleh Merchant ke sistem Veritrans. Kita dapat melihat status terakhir dari transaksi, apakah berhasil atau gagal.
 
 ### 2.1.1 Settings
 
-![MAP Settings](../images/image-003.jpg)
+![MAP Settings](../images/image-003.png)
 
 Pada bagian settings MAP, kita dapat mengubah pengaturan untuk Merchant, seperti melihat metode pembayaran apa saja yang aktif, mengubah email notifikasi pembayaran, mengubah nama Merchant, melakukan pengaturan endpoint notifikasi (akan dibahas di bab 3) dan yang lainnya.
 
