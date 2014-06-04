@@ -429,6 +429,10 @@ Coba lakukan transaksi dengan mengklik tombol Send, maka data transaksi tersebut
 }
 ```
 
+Data transaksi yang telah kita kirim, otomatis akan masuk ke website MAP Veritrans, dan kita dapat melihatnya secara realtime.
+
+![Transaksi di MAP](../images/image-008.png)
+
 Jika Anda masih bingung tentang JSON request untuk metode pembayaran Mandiri ClickPay, nanti akan dibahas di BAB 6. Internet Banking.
 
 ==> [Transaksi Kartu Kredit](../04-kartu-kredit/README.md)
