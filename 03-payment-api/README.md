@@ -375,4 +375,10 @@ Saya menyarankan untuk menggunakan plugin Google Chrome yang bernama POSTMAN seb
 
 ### 3.8.2 Melakukan Transaksi Menggunakan POSTMAN
 
+Sekarang kita akan coba melakukan sebuah transaksi dengan metode pembayaran ```mandiri_clickpay``` menggunakan POSTMAN. Sebelumnya pastikan sudah melakukan registrasi terlebih dahulu di MAP Sandbox Veritrans Indonesia untuk mendapatkan Server Key nya.
+
+Masukkan Server Key ke bagian Basic Auth di POSTMAN, lalu klik tombol [Refresh Headers] untuk mengubah Server Key menjadi Base 64. Dan tambahkan Content-Type dan Accept application/json di request nya; seperti terlihat digambar berikut.
+
+
+
 ==> [Transaksi Kartu Kredit](../04-kartu-kredit/README.md)
