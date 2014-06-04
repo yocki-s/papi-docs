@@ -48,3 +48,8 @@ Wow, banyak sekali! Jika Merchant menggunakan Veritrans Indonesia sebagai Online
 
 ## 1.3 Cara Kerja Payment Gateway
 
+
+
+## 1.4 Merchant Veritrans Indonesia
+
+Sampai saat ini sudah banyak sekali Merchant yang telah melakukan integrasi dengan Veritrans Indonesia, diantaranya Rakuten Belanja Online, BizNet, Blitz Megaplex, Jeruk Nipis, BerryBenka, Traveloka, Sribu.com, Teknoup, Wayang, Loket dan [masih banyak yang lainnya](https://www.veritrans.co.id/portfolio.html).
