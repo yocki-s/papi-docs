@@ -229,9 +229,9 @@ Begitu banyak data yang diperlukan, apa saja yang wajib dikirim dan apa saja yan
 
 ![JSON Format](../images/image-005.png)
 
-- Semua yang berwarna <font color="red">merah</font> adalah atribut yang wajib dikirim oleh merchant untuk melakukan transaksi di Payment API.
-- Semua yang berwarna <font color="blue">biru</font> adalah atribut yang wajib dikirim khusus untuk tipe pembayaran kartu kredit
-- Semua yang berwarna <font color="black">hitam</font> adalah atribut yang tidak wajib (optional) dikirim oleh merchant, namun direkomendasikan untuk dikirim
+- Semua yang berwarna <b>merah</b> adalah atribut yang wajib dikirim oleh merchant untuk melakukan transaksi di Payment API.
+- Semua yang berwarna <b>biru</b> adalah atribut yang wajib dikirim khusus untuk tipe pembayaran kartu kredit
+- Semua yang berwarna <b>hitam</b> adalah atribut yang tidak wajib (optional) dikirim oleh merchant, namun direkomendasikan untuk dikirim
 
 ## 3.3 Payment Response
 
