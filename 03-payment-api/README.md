@@ -235,6 +235,44 @@ Begitu banyak data yang diperlukan, apa saja yang wajib dikirim dan apa saja yan
 
 ## 3.3 Payment Response
 
+Veritrans Payment API memiliki format pesan response yang standard untuk semua API request. Berikut adalah contoh JSON format untuk response transaksi yang sukses :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card transaction is successful",
+    "transaction_id": "fb8b09f9-aca5-4e4b-a921-7d0e9e85eb73",
+    "order_id": "138898199032",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-04 13:40:41",
+    "transaction_status": "capture",
+    "fraud_status": "accept",
+    "gross_amount": "1000000.00"
+}
+```
+
+dan berikut adalah contoh JSON format untuk response gagal :
+
+```json
+{
+    "status_code": "406",
+    "status_message": "Merchant charges the same order id more than once or transaction has been paid"
+}
+```
+
+Untuk transaksi sukses, Merchant akan selalu mendapatkan ```transaction_id``` dari setiap transaksi yang dilakukan. Sangat disarankan untuk menyimpan ```transaction_id``` tersebut di sistem Merchant karena dapat digunakan untuk transaksi API lain seperti; cek status, membatalkan transaksi, dan lain-lain.
+
+| Atribut            | Keterangan                                                                       |
+|--------------------|----------------------------------------------------------------------------------|
+| status_code        | Status code dari Veritrans Payment API (lihat 3.7 Status Code)                   |
+| status_message     | Status message yang berisikan pesan dari Veritrans Payment API                   |
+| transaction_id     | Nomor id transaksi unik di sistem Veritrans                                      |
+| order_id           | Nomor id pembayaran yang dikirim oleh Merchant                                   |
+| transaction_time   | Waktu transaksi terjadi                                                          |
+| transaction_status | Status transaksi, apakah sukses atau gagal (lihat 3.4 Transaction Status)        |
+| fraud_status       | Status pendeteksian kecurigaan akan penipuan atau bukan (lihat 3.5 Fraud Status) |
+| gross_amount       | Total biaya transaksi yang dikirim oleh Merchant                                 |
+
 ## 3.4 Transaction Status
 
 ## 3.5 Fraud Status
