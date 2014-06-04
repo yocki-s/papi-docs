@@ -64,6 +64,81 @@ Accept        : application/json
 
 ## 3.2 Payment Request
 
+Seperti yang telah dibahas sebelumnya, Veritrans Payment API menggunakan JSON sebagai format data untuk melakukan komunikasi server-to-server. Berikut adalah format JSON untuk melakukan transaksi pembayaran.
+
+```json
+{
+      "payment_type": "...",
+      "transaction_details": {
+        "order_id": "138898199031",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "Eko",
+        "last_name" : "Khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@gmail.com",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345"
+        },
+        "shipping_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345"
+        }
+      },
+      "....": {
+
+      }
+}
+```
+
+Yuk kita bahas satu per satu, apa data yang diperlukan untuk melakukan transaksi menggunakan Veritrans Payment API.
+
+### 3.2.1 Payment Type
+
+```json
+{
+      "payment_type": "...",
+}
+```
+
+```payment_type``` merupakan metode pembayaran yang akan dipilih oleh Merchant. Untuk lebih detail metode pembayaran apa saja yang tersedia, bisa dilihat di [3.6 Payment Type](#36-payment-type)
+
+### 3.2.2 Transaction Details
+
+```json
+{
+      "transaction_details": {
+        "order_id": "138898199031",
+        "gross_amount": 1000000
+      }
+}
+```
+
+```transaction_details``` merupakan detail dari transaksi yang dilakukan, yang berisikan order id dan juga gross amount transaksi.
+
+| Atribut      | Tipe Data  | Keterangan                                                       |
+|--------------|------------|------------------------------------------------------------------|
+| order_id     | String(50) | Id pembayaran customer                                           |
+| gross_amount | Long       | Total harga transaksi pembayaran yang akan dibayar oleh customer |
+
 ## 3.3 Payment Response
 
 ## 3.4 Transaction Status
