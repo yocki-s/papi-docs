@@ -113,4 +113,20 @@ Sampai saat ini sudah banyak sekali Merchant yang telah melakukan integrasi deng
 
 Salah satu kelebihan Veritrans Indonesia adalah sistem Veritrans telah terintegrasi dengan Fraud Detection System, yaitu sistem pintar yang bisa mencoba menganalisa transaksi untuk ditentukan apakah transaksi tersebut dicurigai mengandung unsur penipuan atau tidak. FDS (Fraud Detection System) Veritrans Indonesia berjalan secara Real Time, sehingga Merchant dapat melihat hasilnya langsung ketika transaksi dilakukan.
 
+## 1.6 Produk Veritrans
+
+Sampai saat ini, terdapat 3 produk Veritrans Indonesia yang dapat digunakan oleh Merchant untuk memudahkan sistem pembayaran secara online, yaitu; VTDirect, VTWeb dan VTLink.
+
+### 1.6.1 VTDirect
+
+![VTDirect Logo](../images/vt-direct.png)
+
+### 1.6.2 VTWeb
+
+![VTWeb Logo](../images/vt-web.png)
+
+### 1.6.3 VTLink
+
+![VTLink Logo](../images/vt-link.png)
+
 ==> [Pengenalan Sistem Sandbox Veritrans](../02-sandbox/README.md)
