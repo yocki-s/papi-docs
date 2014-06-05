@@ -52,56 +52,19 @@ Jika Anda masih bingung tentang cara kerja Online Payment Gateway yang terintegr
 
 Seandainya Merchant melakukan integrasi secara langsung dengan Payment Provider (penyedia metode pembayaran), maka seperti ini diagram nya :
 
-```
-
-MERCHANT =======SOAP======> PAYMENT PROVIDER
-
-
-```
+![Merchant one to one Payment Provider](../images/image-012.png)
 
 Namun bayangkan jika Merchant melakukan integrasi dengan beberapa Payment Provider, maka diagramnya akan terlihat seperti ini :
 
-```
-
-MERCHANT ==||=====SOAP======> PAYMENT PROVIDER 1
-           ||
-           ||=====RESTful===> PAYMENT PROVIDER 2
-           ||
-           ||=====SOCKET====> PAYMENT PROVIDER 3
-           ||
-           ||=====ISOxxx====> PAYMENT PROVIDER 4
-
-```
+![Merchant one to many Payment Provider](../images/image-009.png)
 
 Merchant perlu implementasi secara manual untuk melakukan integrasi ke semua Payment Provider. Namun hal ini berbeda jika Merchant menggunakan Payment Gateway untuk integrasi ke semua Payment Provider.
 
-```
-
-MERCHANT ====RESTful===> PAYMENT GATEWAY ==||=====SOAP======> PAYMENT PROVIDER 1
-                                           ||
-                                           ||=====RESTful===> PAYMENT PROVIDER 2
-                                           ||
-                                           ||=====SOCKET====> PAYMENT PROVIDER 3
-                                           ||
-                                           ||=====ISOxxx====> PAYMENT PROVIDER 4
-
-```
+![Merchant one to one Payment Gateway one to many Payment Provider](../images/image-010.png)
 
 Bahkan seandainya ada penambahan Payment Provider baru di sistem Payment Gateway, Merchant tidak perlu melakukan development lagi, karena semua sudah dilakukan di sistem Payment Gateway.
 
-```
-
-MERCHANT ====RESTful===> PAYMENT GATEWAY ==||=====SOAP======> PAYMENT PROVIDER 1
-                                           ||
-                                           ||=====RESTful===> PAYMENT PROVIDER 2
-                                           ||
-                                           ||=====SOCKET====> PAYMENT PROVIDER 3
-                                           ||
-                                           ||=====ISOxxx====> PAYMENT PROVIDER 4
-                                           ||
-                                           ||=====??????====> PAYMENT PROVIDER ...
-
-```
+![Merchant one to one Payment Gateway one to many Payment Provider](../images/image-011.png)
 
 Intinya Payment Gateway bertugas untuk mengirim data transaksi (tagihan Merchant ke Pelanggan) ke Payment Provider yang telah ditentukan, sehingga Merchant tidak perlu pusing lagi dengan cara pembayaran & metode pembayaran yang akan dilakukan pelanggan. Merchant hanya perlu mengirim data transaksi, dan menunggu Payment Gateway melakukan konfirmasi apakah pembayaran dari pelanggan berhasil atau gagal.
 
