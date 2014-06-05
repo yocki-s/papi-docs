@@ -84,12 +84,24 @@ Sampai saat ini, terdapat 3 produk Veritrans Indonesia yang dapat digunakan oleh
 
 ![VTDirect Logo](../images/vt-direct.png)
 
+VTDirect adalah sistem Veritrans yang terintegrasi dengan sistem Merchant secara server-to-server. Jika Merchant menggunakan VTDirect, Merchant bisa membuat form pembayaran sendiri, sesukanya. Saat melakukan transaksi dari Merchant, maka sistem Merchant akan mengirimnya server-to-server ke sistem Veritrans.
+
+VTDirect cocok sekali untuk Merchant-Merchant besar, karena dengan menggunakan VTDirect, pelanggan bisa langsung bayar di halaman  website Merchant, tanpa harus masuk ke halaman website Veritrans. Salah satu kekurangan di VTDirect adalah, Merchant dituntut membuat halaman pembayarannya sendiri, jadi jika sewaktu-waktu Veritrans menyediakan metode pembayaran baru, misal Bank XXX ClickPay, maka otomatis Merchant harus membuat halaman pembayaran lagi.
+
 ### 1.6.2 VTWeb
 
 ![VTWeb Logo](../images/vt-web.png)
 
+VTWeb adalah sistem Veritrans yang berjalan sebagai website redirect. Ketika melakukan pembayaran, Merchant akan meminta pelanggan untuk melakukan pembayaran di website Veritrans dan nanti hasilnya akan dikirim server-to-server ke sistem Merchant oleh Veritrans.
+
+VTWeb cocok sekali untuk Merchant-Merchant kecil, karena salah satunya tidak terdapat biaya bulanan. Selain itu dengan menggunakan VTWeb, Merchant tidak perlu pusing-pusing lagi membuat form halaman pembayaran, karena halaman pembayarannya sudah disediakan oleh Veritrans. Bahkan jika sewaktu-waktu ada metode pembayaran baru, Merchant tidak perlu melakukan apapun, otomatis Veritrans yang akan menambah halaman pembayaran di website-nya.
+
 ### 1.6.3 VTLink
 
 ![VTLink Logo](../images/vt-link.png)
+
+VTLink adalah sistem Veritrans untuk mempermudah penjualan di social media seperti Facebook dan Twitter. VTLink sebenarnya peningkatan kemampuan dari VTWeb, dimana Merchant bisa memasukkan daftar produk (nama + harga) yang akan dijual ke sistem Veritrans, nanti sistem Veritrans akan memberikan link (tautan) yang dapat digunakan untuk melakukan pembelian terhadap produk tersebut.
+
+VTLink cocok sekali untuk Merchant-Merchant yang memanfaatkan media sosial untuk berjualan, bahkan tanpa harus membuat toko online, Merchant bisa berjualan menggunakan VTLink, karena nanti transaksi yang berhasil akan dikirim email ke Merchant, sehingga Merchant tahu apakah ada transaksi penjualan atau tidak.
 
 ==> [Pengenalan Sistem Sandbox Veritrans](../02-sandbox/README.md)
