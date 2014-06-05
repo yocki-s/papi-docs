@@ -301,18 +301,30 @@ Khusus untuk transaksi yang fraud status nya challenge, Merchant harus memutuska
 
 ## 3.6 Payment Type
 
-- <b>credit_card</b>
-- <b>bca_klikpay</b>
-- <b>bca_klikbca</b>
-- <b>mandiri_clickpay</b>
-- <b>cimb_clicks</b>
-- <b>bri_epay</b>
-- <b>bii</b>
-- <b>permata</b>
-- <b>xl_tunai</b>
-- <b>telkomsel_cash</b>
-- <b>vtweb</b>
-- <b>vtlink</b>
+- <b>credit_card</b> untuk transaksi Kartu Kredit
+
+Internet Banking :
+
+- <b>bca_klikpay</b> untuk transaksi BCA KlikPay
+- <b>bca_klikbca</b> untuk transaksi KlikBCA
+- <b>mandiri_clickpay</b> untuk transaksi Mandiri ClickPay
+- <b>cimb_clicks</b> untuk transaksi CIMB Clicks
+- <b>bri_epay</b> untuk transaksi BRI Epay
+
+Virtual Account :
+
+- <b>bii</b> untuk transaksi Virtual Account Bank BII
+- <b>permata</b> untuk transaksi Virtual Account Bank Permata
+
+Mobile Payment :
+
+- <b>xl_tunai</b> untuk transaksi XL Tunai
+- <b>telkomsel_cash</b> untuk transaksi Telkomsel TCash
+
+Lainnya :
+
+- <b>vtweb</b> untuk transaksi VTWeb
+- <b>vtlink</b> untuk transaksi VTLink
 
 ## 3.7 Status Code
 
