@@ -28,7 +28,48 @@ Dikhawatirkan jika data kartu kredit lewat ke server Merchant, walaupun Merchant
 
 ### 4.1.2 Charge Request
 
+Setelah mendapatkan ```token_id```, Merchant dapat melakukan proses transaksi dengan mengirim Charge Request ke server Veritrans Payment API yang berisikan data transaksi + ```token_id```. Untuk detail data apa saja yang akan dikirim ke server Veritrans Payment API, kita akan bahas pada sub-bab selanjutnya.
 
+## 4.2 Transaksi Kartu Kredit
+
+### 4.2.1 Transaksi Kartu Kredit Normal
+
+### 4.2.2 Transaksi Kartu Kredit Installment
+
+### 4.2.3 Transaksi Kartu Kredit Point
+
+## 4.3 Transaksi Kartu Kredit 3D Secure
+
+### 4.3.1 Transaksi Kartu Kredit 3D Secure
+
+### 4.3.2 Transaksi Kartu Kredit 3D Secure Installment
+
+### 4.3.3 Transaksi Kartu Kredit 3D Secure Point
+
+## 4.4 Transaksi Kartu Kredit One Click Button
+
+## 4.5 Transaksi Kartu Kredit Two Click Button 
+
+## 4.6 Demo Screencast Transaksi Kartu Kredit
+
+Berikut adalah screencast demo transaksi kartu kredit yang saya buat memanfaatkan plugin POSTMAN Google Chrome dan server sandbox Veritrans Indonesia.
+
+Transaksi Kartu Kredit Normal
+
+- Transaksi Kartu Kredit Normal
+- Transaksi Kartu Kredit Installment
+- Transaksi Kartu Kredit Point
+
+Transaksi Kartu Kredit 3D Secure
+
+- Transaksi Kartu Kredit 3D Secure
+- Transaksi Kartu Kredit 3D Secure Installment
+- Transaksi Kartu Kredit 3D Secure Point
+
+Transaksi Click Button
+
+- Transaksi Kartu Kredit One Click Button
+- Transaksi Kartu Kredit Two Click Button
 
 ==> [Pengenalan Callback & Notification](../05-callback-notification/README.md)
 
