@@ -277,21 +277,27 @@ Untuk transaksi sukses, Merchant akan selalu mendapatkan ```transaction_id``` da
 
 Setiap transaksi yang dikirim oleh Merchant ke Veritrans Payment API, maka akan memiliki ```transaction_status``` (Status Transaksi). Status transaksi digunakan untuk mengetahui apakah sebuah transaksi berhasil atau gagal, atau bahkan belum selesai dilakukan oleh pelanggan. Berikut adalah daftar ```transaction_status``` yang ada pada Veritrans Payment API :
 
-- <b>authorize</b>
-- <b>capture</b>
-- <b>deny</b>
-- <b>pending</b>
-- <b>settlement</b>
-- <b>cancel</b>
-- <b>refund</b>
-- <b>expire</b>
+- <b>authorize</b>, status transaksi ini hanya akan terjadi untuk proses kartu kredit, jika sebuah transaksi memiliki ```transaction_status``` authorize, artinya saldo sebuah kartu kredit telah ditahan, namun belum di potong.
+- <b>capture</b>, status transaksi ini hanya akan terjadi untuk proses kartu kredit, jika sebuah transaksi memiliki ```transaction_status``` capture, artinya saldo sebuah kartu kredit telah dipotong, namun belum berpindah ke akun Veritrans atau Merchant. Maksudnya belum berpindah adalah, transaksi tersebut masih bisa dibatalkan.
+- <b>deny</b>, status transaksi ini terjadi jika sebuah transaksi ditolak oleh Payment Provider, misal dikarenakan saldo tidak mencukupi, dan lain-lain.
+- <b>pending</b>, status transaksi ini terjadi jika sebuah transaksi belum selesai dibayar oleh pelanggan. Misal untuk Virtual Account (ATM), status transaksi tidak akan langsung sukses, karena menunggu pelanggan membayar dengan cara transfer via ATM atau IB (Internet Banking).
+- <b>settlement</b>, status transaksi ini terjadi jika sebuah transaksi susah sukses dan saldo dari akun pelanggan telah berpindah ke akun Veritrans atau Merchant. Jika status transaksi sudah settlement, transaksi tidak bisa dibatalkan lagi secara otomatis oleh sistem, namun harus secara manual.
+- <b>cancel</b>, status transaksi ini terjadi jika sebelumnya sebuah transaksi telah sukses (authorize, capture), namun Merchant membatalkan transaksi tersebut.
+- <b>refund</b>, status transaksi ini terjadi jika sebelumnya sebuah transaksi telah sukses dan saldo sudah berpindah (settlement), namun Merchant meminta untuk mengembalikan saldo pelanggan.
+- <b>expire</b>, status transaksi ini terjadi jika ada transaksi yang belum dibayar oleh pelanggan (pending) dalam jangka waktu tertentu; misal transaksi Virtual Account yang tidak diselesaikan oleh pelanggan.
 
 ## 3.5 Fraud Status
 
-- <b>accept</b>
-- <b>deny</b>
-- <b>challenge</b>
-- <b>noscore</b>
+Perlu diketahui jika Fraud Status hanya akan ada untuk transaksi kartu kredit, selain kartu kredit, tidak akan ada Fraud Status.
+
+- <b>accept</b>, jika status fraud sebuah transaksi adalah accept, artinya Veritrans Fraud Detection System menyatakan bahwa transaksi tersebut tidak terdapat indikasi penipuan, sehingga cukup aman untuk Merchant.
+- <b>deny</b>, jika status fraud sebuah transaksi adalah deny, artinya Veritrans Fraud Detection System menyatakan bahwa transaksi tersebut terindikasi fraud (penipuan), sehingga sangat berbahaya jika Merchant menerima transaksi tersebut.
+- <b>challenge</b>, jika status fraud sebuah transaksi adalah challenge, artinya Veritrans Fraud Detection System menyatakan bahwa transaksi tersebut aman, namun ada sedikit kecurigaan mengandung fraud (penipuan). 
+- <b>noscore</b>, jika status fraud sebuah transaksi adalah noscore, artinya Veritrans Fraud Detection System tidak bisa memberi hasil apapun tentang transaksi tersebut; misal dikarenakan sebuah transaksi tersebut benar-benar baru.
+
+### 3.5.1 Apa yang harus dilakukan jika transaksi Challenge?
+
+Khusus untuk transaksi yang fraud status nya challenge, Merchant harus memutuskannya sendiri, apakah transaksi tersebut akan diterima atau ditolak. Jika Merchant tidak mengambil keputusan, maka Veritrans Payment API akan otomatis membatalkan transaksi tersebut, sehingga hal ini perlu diperhatikan oleh Merchant.
 
 ## 3.6 Payment Type
 
