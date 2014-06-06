@@ -45,7 +45,7 @@ Seperti yang telah dijelaskan sebelumnya, untuk transaksi kartu kredit, terdiri 
 
 #### 4.2.1.1 Token Request Transaksi Kartu Kredit
 
-| API           | Token Request Transaksi Kartu Kredit Normal           |                                   |
+| API           | Token Request Transaksi Kartu Kredit                  |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
 | HTTP Method   | GET                                                   |                                   |
 | Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
@@ -64,7 +64,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Si
 
 ### 4.2.2 Transaksi Kartu Kredit Installment
 
-| API           | Token Request Transaksi Kartu Kredit Normal           |                                   |
+| API           | Token Request Transaksi Kartu Kredit Installment      |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
 | HTTP Method   | GET                                                   |                                   |
 | Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
@@ -77,7 +77,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Si
 
 ### 4.2.3 Transaksi Kartu Kredit Point
 
-| API           | Token Request Transaksi Kartu Kredit Normal           |                                   |
+| API           | Token Request Transaksi Kartu Kredit Point            |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
 | HTTP Method   | GET                                                   |                                   |
 | Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
@@ -92,7 +92,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Si
 
 ### 4.3.1 Transaksi Kartu Kredit 3D Secure
 
-| API           | Token Request Transaksi Kartu Kredit Normal           |                                                          |
+| API           | Token Request Transaksi Kartu Kredit 3D Secure        |                                                          |
 |---------------|-------------------------------------------------------|----------------------------------------------------------|
 | HTTP Method   | GET                                                   |                                                          |
 | Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                          |
@@ -108,7 +108,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Si
 
 ### 4.3.2 Transaksi Kartu Kredit 3D Secure Installment
 
-| API           | Token Request Transaksi Kartu Kredit Normal           |                                                                               |
+| API           | Token Request Transaksi Kartu Kredit 3D Secure Installment           |                                                                               |
 |---------------|-------------------------------------------------------|-------------------------------------------------------------------------------|
 | HTTP Method   | GET                                                   |                                                                               |
 | Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                                               |
@@ -126,7 +126,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Si
 
 ### 4.3.3 Transaksi Kartu Kredit 3D Secure Point
 
-| API           | Token Request Transaksi Kartu Kredit Normal           |                                                          |
+| API           | Token Request Transaksi Kartu Kredit 3D Secure Point           |                                                          |
 |---------------|-------------------------------------------------------|----------------------------------------------------------|
 | HTTP Method   | GET                                                   |                                                          |
 | Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                          |
