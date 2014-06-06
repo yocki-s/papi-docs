@@ -32,7 +32,11 @@ Setelah mendapatkan ```token_id```, Merchant dapat melakukan proses transaksi de
 
 ## 4.2 Transaksi Kartu Kredit
 
-### 4.2.1 Transaksi Kartu Kredit Normal
+> Issuing Bank adalah pihak Bank yang menerbitkan kartu kredit
+
+> Acquiring Bank adalah pihak Bank yang memproses kartu kredit
+
+### 4.2.1 Transaksi Kartu Kredit
 
 ### 4.2.2 Transaksi Kartu Kredit Installment
 
@@ -54,9 +58,9 @@ Setelah mendapatkan ```token_id```, Merchant dapat melakukan proses transaksi de
 
 Berikut adalah screencast demo transaksi kartu kredit yang saya buat memanfaatkan plugin POSTMAN Google Chrome dan server sandbox Veritrans Indonesia.
 
-Transaksi Kartu Kredit Normal
+Transaksi Kartu Kredit
 
-- Transaksi Kartu Kredit Normal
+- Transaksi Kartu Kredit
 - Transaksi Kartu Kredit Installment
 - Transaksi Kartu Kredit Point
 

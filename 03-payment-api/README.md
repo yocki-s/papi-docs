@@ -286,6 +286,13 @@ Setiap transaksi yang dikirim oleh Merchant ke Veritrans Payment API, maka akan 
 - <b>refund</b>, status transaksi ini terjadi jika sebelumnya sebuah transaksi telah sukses dan saldo sudah berpindah (settlement), namun Merchant meminta untuk mengembalikan saldo pelanggan.
 - <b>expire</b>, status transaksi ini terjadi jika ada transaksi yang belum dibayar oleh pelanggan (pending) dalam jangka waktu tertentu; misal transaksi Virtual Account yang tidak diselesaikan oleh pelanggan.
 
+### 3.4.1 Apa saja status transaksi yang dianggap sukses?
+
+Apa saja status transaksi yang dianggap sukses, sehingga Merchant merasa aman untuk melakukan pengiriman barang? 
+
+- <b>authorize</b> dan <b>capture</b>, status transaksi ini berarti transaksi telah sukses, dan selama status masih authorize atau capture, transaksi bisa dibatalkan (cancel) oleh Merchant kapan saja
+- <b>settlement</b>, status transaksi ini berarti telah sukses juga, perbedaannya dengan authorize dan capture adalah, transaksi yang telah settlement tidak dapat dibatalkan (cancel) lagi oleh Merchant. Jika ingin dibatalkan, harus melakukan proses refund secara manual.
+
 ## 3.5 Fraud Status
 
 Perlu diketahui jika Fraud Status hanya akan ada untuk transaksi kartu kredit, selain kartu kredit, tidak akan ada Fraud Status.
