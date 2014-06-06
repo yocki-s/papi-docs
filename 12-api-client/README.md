@@ -1,3 +1,3 @@
-12. API Client
+12. API Client dan Plugins
 =========================================
 

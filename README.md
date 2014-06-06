@@ -12,6 +12,6 @@ Veritrans Payment API Documentation
 9. [Transaksi VTWeb](09-vtweb/README.md)
 10. [Transaksi VTLink](10-vtlink/README.md)
 11. [Non Transaction API](11-non-transaction-api/README.md)
-12. [API Client](12-api-client/README.md)
+12. [API Client dan Plugins](12-api-client/README.md)
 13. [Go Live!](13-go-live/README.md)
 14. [FAQ (Frequently Asked Questions)](14-faq/README.md)
