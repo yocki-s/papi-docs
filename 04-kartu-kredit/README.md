@@ -32,9 +32,12 @@ Setelah mendapatkan ```token_id```, Merchant dapat melakukan proses transaksi de
 
 ## 4.2 Transaksi Kartu Kredit
 
-> Issuing Bank adalah pihak Bank yang menerbitkan kartu kredit
+Sebelum melakukan transaksi kartu kredit, perlu diketahui bahwa dalam kartu kredit terdapat dua jenis Bank yang bertanggung jawab; Issuing Bank dan Acquiring Bank.
 
-> Acquiring Bank adalah pihak Bank yang memproses kartu kredit
+- <b>Issuing Bank</b> adalah pihak Bank yang menerbitkan kartu kredit
+- <b>Acquiring Bank</b> adalah pihak Bank yang memproses kartu kredit
+
+Sampai saat ini Veritrans Indonesia telah bekerja sama dengan tiga Acquiring Bank, yaitu CIMB, BNI dan MANDIRI. Walaupun acquiring bank yang digunakan hanya tiga, bukan berarti kartu kredit yang diterbitkan oleh issuing bank BCA dan yang lainnya tidak dapat di proses, tetap dapat diproses. Selain itu sampai saat ini juga Veritrans Indonesia hanya bisa memproses kartu kredit VISA dan MASTERCARD, kartu kredit yang lain seperti AMEX belum bisa diproses oleh Veritrans Indonesia.
 
 ### 4.2.1 Transaksi Kartu Kredit
 
