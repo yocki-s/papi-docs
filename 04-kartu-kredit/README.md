@@ -56,7 +56,63 @@ Seperti yang telah dijelaskan sebelumnya, untuk transaksi kartu kredit, terdiri 
 |               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit |
 |               | ```client_key```                                      | Client Key Merchant               |
 
+Untuk melakukan Token Request transaksi kartu kredit, kita hanya perlu mengirim data kartu kredit dan client key ke server Veritrans, nanti Veritrans akan memberikan response seperti berikut ini :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, success request new token",
+    "token_id": "411111-1111-08681f2f-b138-4c50-bae5-7ae190aeaca5"
+}
+```
+
+Veritrans Payment API akan memberikan ```token_id``` yang bisa kita gunakan untuk melakukan Charge Request transaksi kartu kredit. Seperti yang telah dibahas sebelumnya kalo ```token_id``` hanya dapat digunakan satu kali, baik sukses maupun gagal.
+
 #### 4.2.1.2 Charge Request Transaksi Kartu Kredit
+
+| API         | Charge Request Transaksi Kartu Kredit                  |                           |
+|-------------|--------------------------------------------------------|---------------------------|
+| HTTP Method | POST                                                   |                           |
+| Headers     | Content-Type                                           | application/json          |
+|             | Accept                                                 | application/json          |
+|             | Authorization                                          | Basic BASE64(```server_key```:) |
+| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+|             | Production : https://api.veritrans.co.id/v2/charge     |                           |
+| Body        | ```json
+{
+      "payment_type": "credit_card",
+      "transaction_details": {
+        "order_id": "138898199044",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "eko",
+        "last_name" : "khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@veritrans.co.id",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345",
+          "country_code" : "JPN"
+        }
+      },
+      "credit_card": {
+        "token_id": "4111113ac32dc1-d528-4eda-a83e-e468e5e02a86"
+      }
+    }
+```                                                       | Jangan lupa untuk menggunakan ```token_id``` yang telah didapat ketika tahapan Token Request                          |
 
 #### 4.2.1.3 Contoh Transaksi Kartu Kredit
 
