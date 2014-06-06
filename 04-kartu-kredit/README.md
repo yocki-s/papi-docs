@@ -78,7 +78,10 @@ Veritrans Payment API akan memberikan ```token_id``` yang bisa kita gunakan untu
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
 | Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
-| Body        | ```json
+
+Body (Contoh) : 
+
+ ```json
 {
       "payment_type": "credit_card",
       "transaction_details": {
@@ -112,7 +115,9 @@ Veritrans Payment API akan memberikan ```token_id``` yang bisa kita gunakan untu
         "token_id": "4111113ac32dc1-d528-4eda-a83e-e468e5e02a86"
       }
     }
-```                                                       | Jangan lupa untuk menggunakan ```token_id``` yang telah didapat ketika tahapan Token Request                          |
+``` 
+
+Jangan lupa untuk menggunakan ```token_id``` yang telah didapatkan pada saat tahapan Token Request.
 
 #### 4.2.1.3 Contoh Transaksi Kartu Kredit
 
