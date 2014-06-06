@@ -41,17 +41,105 @@ Sampai saat ini Veritrans Indonesia telah bekerja sama dengan tiga Acquiring Ban
 
 ### 4.2.1 Transaksi Kartu Kredit
 
+Seperti yang telah dijelaskan sebelumnya, untuk transaksi kartu kredit, terdiri dari dua tahapan; Token Request dan Charge Request. Sekarang kita akan bahas keduanya, data apa saja yang harus kita kirim ke server Veritrans Payment API untuk melakukan transaksi.
+
+#### 4.2.1.1 Token Request Transaksi Kartu Kredit
+
+| API           | Token Request Transaksi Kartu Kredit Normal           |                                   |
+|---------------|-------------------------------------------------------|-----------------------------------|
+| HTTP Method   | GET                                                   |                                   |
+| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
+|               | Production : https://api.veritrans.co.id/v2/token     |                                   |
+| URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                |
+|               | ```card_cvv```                                        | Nomor CVV Kartu Kredit            |
+|               | ```card_exp_month```                                  | 2 Digit Bulan Expire Kartu Kredit |
+|               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit |
+|               | ```client_key```                                      | Client Key Merchant               |
+
+#### 4.2.1.2 Charge Request Transaksi Kartu Kredit
+
+#### 4.2.1.3 Contoh Transaksi Kartu Kredit
+
+Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Silahkan gunakan
+
 ### 4.2.2 Transaksi Kartu Kredit Installment
 
+| API           | Token Request Transaksi Kartu Kredit Normal           |                                   |
+|---------------|-------------------------------------------------------|-----------------------------------|
+| HTTP Method   | GET                                                   |                                   |
+| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
+|               | Production : https://api.veritrans.co.id/v2/token     |                                   |
+| URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                |
+|               | ```card_cvv```                                        | Nomor CVV Kartu Kredit            |
+|               | ```card_exp_month```                                  | 2 Digit Bulan Expire Kartu Kredit |
+|               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit |
+|               | ```client_key```                                      | Client Key Merchant               |
+
 ### 4.2.3 Transaksi Kartu Kredit Point
+
+| API           | Token Request Transaksi Kartu Kredit Normal           |                                   |
+|---------------|-------------------------------------------------------|-----------------------------------|
+| HTTP Method   | GET                                                   |                                   |
+| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
+|               | Production : https://api.veritrans.co.id/v2/token     |                                   |
+| URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                |
+|               | ```card_cvv```                                        | Nomor CVV Kartu Kredit            |
+|               | ```card_exp_month```                                  | 2 Digit Bulan Expire Kartu Kredit |
+|               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit |
+|               | ```client_key```                                      | Client Key Merchant               |
 
 ## 4.3 Transaksi Kartu Kredit 3D Secure
 
 ### 4.3.1 Transaksi Kartu Kredit 3D Secure
 
+| API           | Token Request Transaksi Kartu Kredit Normal           |                                                          |
+|---------------|-------------------------------------------------------|----------------------------------------------------------|
+| HTTP Method   | GET                                                   |                                                          |
+| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                          |
+|               | Production : https://api.veritrans.co.id/v2/token     |                                                          |
+| URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                                       |
+|               | ```card_cvv```                                        | Nomor CVV Kartu Kredit                                   |
+|               | ```card_exp_month```                                  | 2 Digit Bulan Expire Kartu Kredit                        |
+|               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit                        |
+|               | ```client_key```                                      | Client Key Merchant                                      |
+|               | ```secure```                                          | Harus ```true```                                         |
+|               | ```gross_amount```                                    | Total harga transaksi                                    |
+|               | ```bank```                                            | [OPTIONAL] Nama acquiring bank (cimb, bni, atau mandiri) |
+
 ### 4.3.2 Transaksi Kartu Kredit 3D Secure Installment
 
+| API           | Token Request Transaksi Kartu Kredit Normal           |                                                                               |
+|---------------|-------------------------------------------------------|-------------------------------------------------------------------------------|
+| HTTP Method   | GET                                                   |                                                                               |
+| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                                               |
+|               | Production : https://api.veritrans.co.id/v2/token     |                                                                               |
+| URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                                                            |
+|               | ```card_cvv```                                        | Nomor CVV Kartu Kredit                                                        |
+|               | ```card_exp_month```                                  | 2 Digit Bulan Expire Kartu Kredit                                             |
+|               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit                                             |
+|               | ```client_key```                                      | Client Key Merchant                                                           |
+|               | ```secure```                                          | Harus ```true```                                                              |
+|               | ```gross_amount```                                    | Total harga transaksi                                                         |
+|               | ```bank```                                            | [OPTIONAL] Nama acquiring bank (cimb, bni, atau mandiri)                      |
+|               | ```installment```                                     | Harus ```true```                                                              |
+|               | ```installment_term```                                | Bulan installment, misal 3 (untuk 3 bulan cicilan), 6 (untuk 6 bulan cicilan) |
+
 ### 4.3.3 Transaksi Kartu Kredit 3D Secure Point
+
+| API           | Token Request Transaksi Kartu Kredit Normal           |                                                          |
+|---------------|-------------------------------------------------------|----------------------------------------------------------|
+| HTTP Method   | GET                                                   |                                                          |
+| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                          |
+|               | Production : https://api.veritrans.co.id/v2/token     |                                                          |
+| URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                                       |
+|               | ```card_cvv```                                        | Nomor CVV Kartu Kredit                                   |
+|               | ```card_exp_month```                                  | 2 Digit Bulan Expire Kartu Kredit                        |
+|               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit                        |
+|               | ```client_key```                                      | Client Key Merchant                                      |
+|               | ```secure```                                          | Harus ```true```                                         |
+|               | ```gross_amount```                                    | Total harga transaksi                                    |
+|               | ```bank```                                            | [OPTIONAL] Nama acquiring bank (cimb, bni, atau mandiri) |
+|               | ```point```                                           | Harus ```true```                                         |
 
 ## 4.4 Transaksi Kartu Kredit One Click Button
 
