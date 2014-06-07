@@ -121,9 +121,14 @@ Jangan lupa untuk menggunakan ```token_id``` yang telah didapatkan pada saat tah
 
 #### 4.2.1.3 Contoh Transaksi Kartu Kredit
 
-Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Silahkan gunakan
+Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
+
+- [Transaksi Kartu Kredit Menggunakan POSTMAN](transaksi-kartu-kredit.md)
+- Screencast Transaksi Kartu Kredit Menggunakan POSTMAN
 
 ### 4.2.2 Transaksi Kartu Kredit Installment
+
+#### 4.2.2.1 Token Request Transaksi Kartu Kredit Installment
 
 | API           | Token Request Transaksi Kartu Kredit Installment      |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
@@ -136,7 +141,68 @@ Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Si
 |               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit |
 |               | ```client_key```                                      | Client Key Merchant               |
 
+#### 4.2.2.2 Charge Request Transaksi Kartu Kredit Installment
+
+| API         | Charge Request Transaksi Kartu Kredit Installment      |                           |
+|-------------|--------------------------------------------------------|---------------------------|
+| HTTP Method | POST                                                   |                           |
+| Headers     | Content-Type                                           | application/json          |
+|             | Accept                                                 | application/json          |
+|             | Authorization                                          | Basic BASE64(```server_key```:) |
+| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+|             | Production : https://api.veritrans.co.id/v2/charge     |                           |
+
+Body (Contoh) : 
+
+ ```json
+{
+      "payment_type": "credit_card",
+      "transaction_details": {
+        "order_id": "138898199044",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "eko",
+        "last_name" : "khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@veritrans.co.id",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345",
+          "country_code" : "JPN"
+        }
+      },
+      "credit_card": {
+        "token_id": "4111113ac32dc1-d528-4eda-a83e-e468e5e02a86",
+        "installment_term" : 3
+      }
+    }
+``` 
+
+Dalam JSON Body untuk transaksi kartu kredit installment, pertu ditambahkan parameter ```installment_term``` yang berisikan bulan installment (cicilan), misal; 3 (artinya cicilan 3 bulan), 6 (artinya cicilan 6 bulan) dan 12 (artinya cicilan 12 bulan).
+
+#### 4.2.2.3 Contoh Transaksi Kartu Kredit Installment
+
+Sekarang kita akan coba melakukan transaksi kartu kredit installment menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
+
+- [Transaksi Kartu Kredit Installment Menggunakan POSTMAN](transaksi-kartu-kredit-installment.md)
+- Screencast Transaksi Kartu Kredit Installment Menggunakan POSTMAN
+
 ### 4.2.3 Transaksi Kartu Kredit Point
+
+#### 4.2.3.1 Token Request Transaksi Kartu Kredit Point
 
 | API           | Token Request Transaksi Kartu Kredit Point            |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
@@ -148,6 +214,65 @@ Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Si
 |               | ```card_exp_month```                                  | 2 Digit Bulan Expire Kartu Kredit |
 |               | ```card_exp_year```                                   | 4 Digit Tahun Expire Kartu Kredit |
 |               | ```client_key```                                      | Client Key Merchant               |
+
+#### 4.2.3.2 Charge Request Transaksi Kartu Kredit Point
+
+| API         | Charge Request Transaksi Kartu Kredit Installment      |                           |
+|-------------|--------------------------------------------------------|---------------------------|
+| HTTP Method | POST                                                   |                           |
+| Headers     | Content-Type                                           | application/json          |
+|             | Accept                                                 | application/json          |
+|             | Authorization                                          | Basic BASE64(```server_key```:) |
+| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+|             | Production : https://api.veritrans.co.id/v2/charge     |                           |
+
+Body (Contoh) : 
+
+ ```json
+{
+      "payment_type": "credit_card",
+      "transaction_details": {
+        "order_id": "138898199044",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "eko",
+        "last_name" : "khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@veritrans.co.id",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345",
+          "country_code" : "JPN"
+        }
+      },
+      "credit_card": {
+        "token_id": "4111113ac32dc1-d528-4eda-a83e-e468e5e02a86",
+        "redeem_amount" : 5000
+      }
+    }
+``` 
+
+Dalam JSON Body untuk transaksi kartu kredit point, pertu ditambahkan parameter ```redeem_amount``` yaitu jumlah point (dalam harga) yang akan digunakan dalam transaksi. Misal jika ```gross_amount``` nya 10000, sedangkan ```redeem_amount``` nya adalah 5000 artinya transaksi tersebut akan dibayar menggunakan saldo kartu kredit sebanyak 5000 dan point 5000.
+
+#### 4.2.2.3 Contoh Transaksi Kartu Kredit Point
+
+Sekarang kita akan coba melakukan transaksi kartu kredit point menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
+
+- [Transaksi Kartu Kredit Point Menggunakan POSTMAN](transaksi-kartu-kredit-point.md)
+- Screencast Transaksi Kartu Kredit Point Menggunakan POSTMAN
 
 ## 4.3 Transaksi Kartu Kredit 3D Secure
 
