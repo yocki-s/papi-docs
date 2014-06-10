@@ -303,7 +303,7 @@ Body (Contoh) :
     }
 ``` 
 
-Dalam JSON Body untuk transaksi kartu kredit point, pertu ditambahkan parameter ```redeem_amount``` yaitu jumlah point (dalam harga) yang akan digunakan dalam transaksi. Misal jika ```gross_amount``` nya 10000, sedangkan ```redeem_amount``` nya adalah 5000 artinya transaksi tersebut akan dibayar menggunakan saldo kartu kredit sebanyak 5000 dan point 5000.
+Dalam JSON Body untuk transaksi kartu kredit point, pertu ditambahkan parameter ```point_redeem_amount``` yaitu jumlah point (dalam harga) yang akan digunakan dalam transaksi. Misal jika ```gross_amount``` nya 10000, sedangkan ```point_redeem_amount``` nya adalah 5000 artinya transaksi tersebut akan dibayar menggunakan saldo kartu kredit sebanyak 5000 dan point 5000.
 
 Contoh Charge Response yang akan didapatkan oleh Merchant :
 
@@ -533,6 +533,10 @@ Sekarang kita akan coba melakukan transaksi kartu kredit 3D secure menggunakan P
 |               | ```installment```                                     | Harus ```true```                                                              |
 |               | ```installment_term```                                | Bulan installment, misal 3 (untuk 3 bulan cicilan), 6 (untuk 6 bulan cicilan) |
 
+Untuk transaksi 3D secure installment, di tahapan Token Request terdapat beberapa tambahan parameter yaitu ```installment``` yang harus bernilai ```true``` untuk menyatakan kalo itu transaksi installment, dan parameter ```installment_term``` untuk memasukkan berama bulan cicilan yang akan dilakukan.
+
+Untuk Token Response dari Token Request installment, sama dengan transaksi 3D secure biasa, pelanggan perlu melakukan proses autentikasi terlebih dahulu dengan menggunakan ```redirect_url``` yang didapatkan dari Token Response.
+
 #### 4.3.3.2 Charge Request Transaksi Kartu Kredit 3D Secure Installment
 
 | API         | Charge Request Transaksi Kartu Kredit Installment      |                           |
@@ -629,6 +633,10 @@ Sekarang kita akan coba melakukan transaksi kartu kredit 3D secure installment m
 |               | ```bank```                                            | [OPTIONAL] Nama acquiring bank (cimb, bni, atau mandiri) |
 |               | ```point```                                           | Harus ```true```                                         |
 
+Untuk Token Request transaksi 3D secure point, merchant hanya perlu menambahkan parameter ```point``` dengan nilai ```true``` yang menyatakan bahwa transaksinya adalah transaksi point.
+
+Untuk Token Response dari Token Request point, sama dengan transaksi 3D secure biasa, pelanggan perlu melakukan proses autentikasi terlebih dahulu dengan menggunakan ```redirect_url``` yang didapatkan dari Token Response.
+
 #### 4.3.4.2 Charge Request Transaksi Kartu Kredit 3D Secure Point
 
 | API         | Charge Request Transaksi Kartu Kredit 3D Secure Point      |                           |
@@ -679,7 +687,7 @@ Body (Contoh) :
     }
 ``` 
 
-Dalam JSON Body untuk transaksi kartu kredit point, pertu ditambahkan parameter ```redeem_amount``` yaitu jumlah point (dalam harga) yang akan digunakan dalam transaksi. Misal jika ```gross_amount``` nya 10000, sedangkan ```redeem_amount``` nya adalah 5000 artinya transaksi tersebut akan dibayar menggunakan saldo kartu kredit sebanyak 5000 dan point 5000.
+Dalam JSON Body untuk transaksi kartu kredit point, pertu ditambahkan parameter ```point_redeem_amount``` yaitu jumlah point (dalam harga) yang akan digunakan dalam transaksi. Misal jika ```gross_amount``` nya 10000, sedangkan ```point_redeem_amount``` nya adalah 5000 artinya transaksi tersebut akan dibayar menggunakan saldo kartu kredit sebanyak 5000 dan point 5000.
 
 Contoh Charge Response yang akan didapatkan oleh Merchant :
 
