@@ -713,8 +713,51 @@ Sekarang kita akan coba melakukan transaksi kartu kredit 3D secure point menggun
 - [Transaksi Kartu Kredit 3D Secure Point Menggunakan POSTMAN](transaksi-kartu-kredit-3d-secure-point.md)
 - Screencast Transaksi Kartu Kredit 3D Secure Point Menggunakan POSTMAN
 
-
 ## 4.4 Transaksi Kartu Kredit One Click Button
+
+One Click Button merupakan fitur yang banyak diinginkan oleh Merchant dan Pelanggan. Bayangkan hanya dengan satu klik, pelanggan bisa melakukan transaksi online tanpa harus ribet memasukkan data kartu kredit nya setiap kali melakukan transaksi.
+
+Namun perlu diketahui bahwa di Indonesia, tidak semua acquiring bank mendukung One Click Button atau lebih dikenal dengan transaksi <i>recurring</i>. Untuk saatnya hanya acquiring bank BNI yang mendukung transaksi recurring, oleh karena itu jika Merchant ingin menambahkan fitur One Click Button di sistem-nya, Merchant perlu melakukan kerja sama dengan acquiring bank BNI.
+
+### 4.4.1 Tahapan Transaksi Kartu Kredit One Click Button
+
+Sebelum merchant dan pelanggan bisa melakukan transaksi one click button, sebelumnya pelanggan harus melakukan transaksi 3D secure. Jika transaksi 3D secure tersebut sukses, maka transaksi selanjutnya baru bisa melakukan transaksi one click button.
+
+Pada tahapan transaksi 3D secure permata kali, Merchant perlu menambahkan parameter ```save_token_id``` pada saat Charge Request transaksi 3D secure. Parameter tersebut digunakan untuk meminta Veritrans membuatkan one click token yang bisa digunakan untuk transaksi selanjutnya.
+
+Berikut contoh Charge Request transaksi 3D secure pertama :
+
+```json
+{
+      "payment_type": "credit_card",
+      ...,
+      "credit_card": {
+        "token_id": "411111-1111-30edf4be-72fe-47f4-bf4b-a45e7372f9bf",
+        "save_token_id" : true
+      }
+    }
+```
+
+Jika transaksi sukses, maka Veritrans akan memberikan Charge Response seperti berikut ini :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card 3D Secure transaction is successful",
+    "transaction_id": "1365c5cb-c68f-4962-b4b9-5d81434e67b0",
+    "order_id": "14578199045",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 17:55:21",
+    "transaction_status": "capture",
+    "fraud_status": "accept",
+    "masked_card": "411111-1111",
+    "saved_token_id": "41111106438ffc-b169-424f-bf9f-e277c56a8972",
+    "saved_token_id_expired_at": "2024-06-10 17:55:21",
+    "gross_amount": "1000000.00"
+}
+```
+
+Merchant akan mendapatkan data one click token di parameter ```saved_token_id``` yang dapat disimpan di server Merchant untuk melakukan transaksi selanjutnya untuk pelanggan tersebut. Sampai kapan one click token dapat digunakan? Merchant bisa melihat masa valid one click token pada parameter ```saved_token_id_expired_at```.
 
 ## 4.5 Transaksi Kartu Kredit Two Click Button 
 
