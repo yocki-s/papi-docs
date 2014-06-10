@@ -117,6 +117,23 @@ Body (Contoh) :
     }
 ``` 
 
+Contoh Charge Response yang akan didapatkan oleh Merchant
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card transaction is successful",
+    "transaction_id": "8ce376c8-1f27-4930-b1e9-331d4d46ca3f",
+    "order_id": "13889835199045",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 16:57:20",
+    "transaction_status": "capture",
+    "fraud_status": "accept",
+    "masked_card": "411111-1111",
+    "gross_amount": "1000000.00"
+}
+```
+
 Jangan lupa untuk menggunakan ```token_id``` yang telah didapatkan pada saat tahapan Token Request.
 
 #### 4.2.1.3 Contoh Transaksi Kartu Kredit
@@ -129,6 +146,8 @@ Sekarang kita akan coba melakukan transaksi kartu kredit menggunakan POSTMAN. Si
 ### 4.2.2 Transaksi Kartu Kredit Installment
 
 #### 4.2.2.1 Token Request Transaksi Kartu Kredit Installment
+
+Token Request dan Token Response untuk transaksi kartu kredit installment sama dengan transaksi kartu kredit normal.
 
 | API           | Token Request Transaksi Kartu Kredit Installment      |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
@@ -193,6 +212,23 @@ Body (Contoh) :
 
 Dalam JSON Body untuk transaksi kartu kredit installment, pertu ditambahkan parameter ```installment_term``` yang berisikan bulan installment (cicilan), misal; 3 (artinya cicilan 3 bulan), 6 (artinya cicilan 6 bulan) dan 12 (artinya cicilan 12 bulan).
 
+Contoh Charge Response yang akan didapatkan oleh Merchant :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card Installment transaction is successful",
+    "transaction_id": "98c4928e-2d86-46ce-bd8f-9c955210ed5c",
+    "order_id": "463464646",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 16:59:20",
+    "transaction_status": "capture",
+    "fraud_status": "accept",
+    "masked_card": "411111-1111",
+    "gross_amount": "1000000.00"
+}
+```
+
 #### 4.2.2.3 Contoh Transaksi Kartu Kredit Installment
 
 Sekarang kita akan coba melakukan transaksi kartu kredit installment menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
@@ -203,6 +239,8 @@ Sekarang kita akan coba melakukan transaksi kartu kredit installment menggunakan
 ### 4.2.3 Transaksi Kartu Kredit Point
 
 #### 4.2.3.1 Token Request Transaksi Kartu Kredit Point
+
+Token Request dan Token Response untuk transaksi kartu kredit point sama dengan transaksi kartu kredit normal.
 
 | API           | Token Request Transaksi Kartu Kredit Point            |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
@@ -217,7 +255,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit installment menggunakan
 
 #### 4.2.3.2 Charge Request Transaksi Kartu Kredit Point
 
-| API         | Charge Request Transaksi Kartu Kredit Installment      |                           |
+| API         | Charge Request Transaksi Kartu Kredit Point      |                           |
 |-------------|--------------------------------------------------------|---------------------------|
 | HTTP Method | POST                                                   |                           |
 | Headers     | Content-Type                                           | application/json          |
@@ -266,6 +304,23 @@ Body (Contoh) :
 ``` 
 
 Dalam JSON Body untuk transaksi kartu kredit point, pertu ditambahkan parameter ```redeem_amount``` yaitu jumlah point (dalam harga) yang akan digunakan dalam transaksi. Misal jika ```gross_amount``` nya 10000, sedangkan ```redeem_amount``` nya adalah 5000 artinya transaksi tersebut akan dibayar menggunakan saldo kartu kredit sebanyak 5000 dan point 5000.
+
+Contoh Charge Response yang akan didapatkan oleh Merchant :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card Point transaction is successful",
+    "transaction_id": "bc9d1e9b-9c43-4075-80bf-896d52d6b94c",
+    "order_id": "463asd46346",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 17:00:19",
+    "transaction_status": "capture",
+    "fraud_status": "accept",
+    "masked_card": "411111-1111",
+    "gross_amount": "1000000.00"
+}
+```
 
 #### 4.2.2.3 Contoh Transaksi Kartu Kredit Point
 
@@ -450,7 +505,17 @@ Berikut adalah contoh Charge Response yang didapat oleh Merchant :
 }
 ```
 
+#### 4.3.2.3 Contoh Transaksi Kartu Kredit 3D Secure
+
+Sekarang kita akan coba melakukan transaksi kartu kredit 3D secure menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
+
+- [Transaksi Kartu Kredit 3D Secure Menggunakan POSTMAN](transaksi-kartu-kredit-3d-secure.md)
+- Screencast Transaksi Kartu Kredit 3D Secure Menggunakan POSTMAN
+
+
 ### 4.3.3 Transaksi Kartu Kredit 3D Secure Installment
+
+#### 4.3.3.1 Token Request Transaksi Kartu Kredit 3D Secure Installment
 
 | API           | Token Request Transaksi Kartu Kredit 3D Secure Installment           |                                                                               |
 |---------------|-------------------------------------------------------|-------------------------------------------------------------------------------|
@@ -468,6 +533,60 @@ Berikut adalah contoh Charge Response yang didapat oleh Merchant :
 |               | ```installment```                                     | Harus ```true```                                                              |
 |               | ```installment_term```                                | Bulan installment, misal 3 (untuk 3 bulan cicilan), 6 (untuk 6 bulan cicilan) |
 
+#### 4.3.3.2 Charge Request Transaksi Kartu Kredit 3D Secure Installment
+
+| API         | Charge Request Transaksi Kartu Kredit Installment      |                           |
+|-------------|--------------------------------------------------------|---------------------------|
+| HTTP Method | POST                                                   |                           |
+| Headers     | Content-Type                                           | application/json          |
+|             | Accept                                                 | application/json          |
+|             | Authorization                                          | Basic BASE64(```server_key```:) |
+| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+|             | Production : https://api.veritrans.co.id/v2/charge     |                           |
+
+Body (Contoh) : 
+
+ ```json
+{
+      "payment_type": "credit_card",
+      "transaction_details": {
+        "order_id": "138898199044",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "eko",
+        "last_name" : "khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@veritrans.co.id",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345",
+          "country_code" : "JPN"
+        }
+      },
+      "credit_card": {
+        "token_id": "4111113ac32dc1-d528-4eda-a83e-e468e5e02a86",
+        "installment_term" : 3
+      }
+    }
+``` 
+
+Dalam JSON Body untuk transaksi kartu kredit installment, pertu ditambahkan parameter ```installment_term``` yang berisikan bulan installment (cicilan), misal; 3 (artinya cicilan 3 bulan), 6 (artinya cicilan 6 bulan) dan 12 (artinya cicilan 12 bulan).
+
+Contoh Charge Response yang akan didapatkan oleh Merchant :
+
 ```json
 {
     "status_code": "200",
@@ -483,7 +602,17 @@ Berikut adalah contoh Charge Response yang didapat oleh Merchant :
 }
 ```
 
+#### 4.3.3.3 Contoh Transaksi Kartu Kredit 3D Secure Installment
+
+Sekarang kita akan coba melakukan transaksi kartu kredit 3D secure installment menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
+
+- [Transaksi Kartu Kredit 3D Secure Installment Menggunakan POSTMAN](transaksi-kartu-kredit-3d-secure-installment.md)
+- Screencast Transaksi Kartu Kredit 3D Secure Installment Menggunakan POSTMAN
+
+
 ### 4.3.4 Transaksi Kartu Kredit 3D Secure Point
+
+#### 4.3.4.1 Token Request Transaksi Kartu Kredit 3D Secure Point
 
 | API           | Token Request Transaksi Kartu Kredit 3D Secure Point           |                                                          |
 |---------------|-------------------------------------------------------|----------------------------------------------------------|
@@ -500,6 +629,60 @@ Berikut adalah contoh Charge Response yang didapat oleh Merchant :
 |               | ```bank```                                            | [OPTIONAL] Nama acquiring bank (cimb, bni, atau mandiri) |
 |               | ```point```                                           | Harus ```true```                                         |
 
+#### 4.3.4.2 Charge Request Transaksi Kartu Kredit 3D Secure Point
+
+| API         | Charge Request Transaksi Kartu Kredit 3D Secure Point      |                           |
+|-------------|--------------------------------------------------------|---------------------------|
+| HTTP Method | POST                                                   |                           |
+| Headers     | Content-Type                                           | application/json          |
+|             | Accept                                                 | application/json          |
+|             | Authorization                                          | Basic BASE64(```server_key```:) |
+| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+|             | Production : https://api.veritrans.co.id/v2/charge     |                           |
+
+Body (Contoh) : 
+
+ ```json
+{
+      "payment_type": "credit_card",
+      "transaction_details": {
+        "order_id": "138898199044",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "eko",
+        "last_name" : "khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@veritrans.co.id",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345",
+          "country_code" : "JPN"
+        }
+      },
+      "credit_card": {
+        "token_id": "4111113ac32dc1-d528-4eda-a83e-e468e5e02a86",
+        "point_redeem_amount" : 5000
+      }
+    }
+``` 
+
+Dalam JSON Body untuk transaksi kartu kredit point, pertu ditambahkan parameter ```redeem_amount``` yaitu jumlah point (dalam harga) yang akan digunakan dalam transaksi. Misal jika ```gross_amount``` nya 10000, sedangkan ```redeem_amount``` nya adalah 5000 artinya transaksi tersebut akan dibayar menggunakan saldo kartu kredit sebanyak 5000 dan point 5000.
+
+Contoh Charge Response yang akan didapatkan oleh Merchant :
+
 ```json
 {
     "status_code": "200",
@@ -514,6 +697,14 @@ Berikut adalah contoh Charge Response yang didapat oleh Merchant :
     "gross_amount": "1000000.00"
 }
 ```
+
+#### 4.3.4.3 Contoh Transaksi Kartu Kredit 3D Secure Point
+
+Sekarang kita akan coba melakukan transaksi kartu kredit 3D secure point menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
+
+- [Transaksi Kartu Kredit 3D Secure Point Menggunakan POSTMAN](transaksi-kartu-kredit-3d-secure-point.md)
+- Screencast Transaksi Kartu Kredit 3D Secure Point Menggunakan POSTMAN
+
 
 ## 4.4 Transaksi Kartu Kredit One Click Button
 
