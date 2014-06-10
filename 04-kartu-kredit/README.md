@@ -314,7 +314,11 @@ Kerugian 3D Secure untuk Merchant, Pelanggan dan Bank
 
 #### 4.3.1.3 Resiko Fraud untuk 3D Secure
 
+Saat proses autentikasi 3D secure selesai, maka akan menghasilkan sebuah nilai ECI (Ecommerce Indicator). Terdapat tiga jenis ECI di Visa / MasterCard :
 
+- ECI 5 (Visa) / ECI 2 (Master Card). <b>Full Authentication</b>. Hal ini berarti proses autentikasi 3D secure telah berhasil dan kartu kredit teregistrasi 3D Secure. Jika terjadi fraud maka yang bertanggung jawab adalah Issuer Bank.
+- ECI 6 (Visa) / ECI 1 (Master Card). <b>Attempted Authentication</b>. Hal ini berarti kartu kredit tidak terdaftar 3D Secure. Jika terjadi fraud maka yang bertanggung jawab adalah Issuer Bank.
+- ECI 7 (Visa) / ECI 0 (Master Card). <b>Authentication is unsuccessful or not attempted</b>. Hal ini berarti proses autentikasi gagal, misal pelanggan salah memasukkan one time token. Jika transaksi tetap dilanjutkan, maka transaksi akan dianggap sebagai transaksi normal (Non 3D Secure). Jika terjadi fraud maka yang bertanggung jawab adalah Merchant. Namun di Veritrans jika autentikasi menghasilkan ECI 7 (Visa) / ECI 0 (Master Card), maka transaksi akan ditolak, sehingga Merchant akan aman.
 
 ### 4.3.2 Transaksi Kartu Kredit 3D Secure
 
