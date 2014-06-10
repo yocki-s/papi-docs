@@ -324,6 +324,10 @@ Hasil untuk tiap ECI bisa kita lihat di Veritrans MAP seperti pada gambar dibawa
 
 ![ECI di Veritrans MAP](../images/image-013.png)
 
+#### 4.3.1.3 Tahapan Transaksi Kartu Kredit 3D Secure di Veritrans
+
+Tahapan transaksi 3D Secure tidak sama dengan transaksi kartu kredit normal. Ada tahapan pelanggan perlu memasukkan one time token di halaman issuer bank setelah proses Token Request dan sebelum Charge Request.
+
 ### 4.3.2 Transaksi Kartu Kredit 3D Secure
 
 | API           | Token Request Transaksi Kartu Kredit 3D Secure        |                                                          |
