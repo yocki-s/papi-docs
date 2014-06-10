@@ -326,7 +326,23 @@ Hasil untuk tiap ECI bisa kita lihat di Veritrans MAP seperti pada gambar dibawa
 
 #### 4.3.1.3 Tahapan Transaksi Kartu Kredit 3D Secure di Veritrans
 
-Tahapan transaksi 3D Secure tidak sama dengan transaksi kartu kredit normal. Ada tahapan pelanggan perlu memasukkan one time token di halaman issuer bank setelah proses Token Request dan sebelum Charge Request.
+Tahapan transaksi 3D Secure tidak sama dengan transaksi kartu kredit normal. Ada tahapan pelanggan perlu memasukkan one time token di halaman issuer bank setelah proses Token Request dan sebelum Charge Request. 
+
+Dari mana Merchant tahu website issuer bank untuk melakukan autentikasi one time token? Hal ini sudah ditangani oleh sistem Veritrans. Pada saat tahapan Token Request, Veritrans akan mengembalikan ```redirect_url``` yang berisikan url yang perlu diakses oleh pelanggan untuk melakukan autentikasi one time token. Berikut adalah contoh token response untuk transaksi 3D secure :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, success request new token",
+    "token_id": "411111-1111-3fe282c0-1eb8-4f74-91aa-7a23c4c66ef3",
+    "redirect_url": "https://api.sandbox.veritrans.co.id/v2/token/redirect/411111-1111-3fe282c0-1eb8-4f74-91aa-7a23c4c66ef3",
+    "bank": "bni"
+}
+```
+
+Token ```token_id``` yang didapat dari Token Request tidak dapat digunakan selama proses autentikasi belum selesai. ```token_id``` baru dapat digunakan jika proses autentikasi telah selesai. 
+
+Untuk tahapan Charge Request, sama saja dengan transaksi kartu kredit non 3D secure, yang membedakan hanyakan parameter yang dikirim ketika Token Request. Untuk lebih detail kita akan bahas di sub-bab selanjutnya.
 
 ### 4.3.2 Transaksi Kartu Kredit 3D Secure
 
