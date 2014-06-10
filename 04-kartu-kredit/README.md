@@ -276,7 +276,49 @@ Sekarang kita akan coba melakukan transaksi kartu kredit point menggunakan POSTM
 
 ## 4.3 Transaksi Kartu Kredit 3D Secure
 
-### 4.3.1 Transaksi Kartu Kredit 3D Secure
+[![Introduction to 3D Secure](../image/image-013.png)](http://www.slideshare.net/eecchhoo/introduction-to-3-d-secure-v1)
+
+### 4.3.1 Pengenalan 3D Secure
+
+Jika Anda belum mengerti tentang 3D Secure, yuk kita bahas apa itu 3D Secure. 3D Secure adalah kepanjangan dari 3 Domain Secure. 3D Secure di buat untuk agar belanja online lebih aman dengan cara meng-autentikasi pemegang kartu kredit pada saat melakukan pembayaran. 3D Secure lebih dikenal sebagai "Verified by Visa" untuk Visa atau "MasterCard SecureCode" untuk MasterCard.
+
+Proses autentikasi akan dilakukan pada 3 domain, yaitu :
+
+- Acquirer Domain (Merchant, Payment Gateway, dan Acquiring Bank)
+- Issuer Domain (Bank yang menerbitkan kartu kredit)
+- Interoperability Domain (Directory Server dan Authentication History server yang disediakan oleh card brand, Visa atau MasterCard)
+
+#### 4.3.1.1 Tahapan Proses 3D Secure
+
+Berbeda dengan transaksi kartu kredit normal, proses 3D Secure lebih rumit tahapannya, walaupun proses ini sangat aman, namun kadang 3D secure membuat pelanggan malas untuk berbelanja.
+
+1. Pelanggan melakukan transaksi dan Merchant meminta Veritrans untuk memproses dengan 3D Secure
+2. Sistem Veritrans mengirimkan data ke Visa/MasterCard untuk mengetahui apakah kartu kredit telah teregistrasi sebagai 3D Secure.
+3. Jika kartu kredit teregistrasi 3D Secure, Visa/MasterCard akan me-redirect pelanggan ke halaman autentikasi Issuer Domain.
+4. Pelanggan akan menerima one time token via SMS dari issuer bank dan pelanggan harus memasukkan token yang diterima di halaman autentikasi issuer domain.
+5. Setelah proses autentikasi selesai, Veritrans akan memproses transaksi dengan mengirim seluruh datanya ke acquiring bank.
+
+#### 4.3.1.2 Keuntungan dan Kerugian 3D Secure
+
+Mengimplementasikan 3D Secure di sistem pembayaran Merchant memang memiliki keuntungan dan kerugian, diantaranya;
+
+Keuntungan 3D Secure untuk Merchant, Pelanggan dan Bank
+
+- Untuk Merchant, 3D Secure aman dari Fraud (penipuan). Resiko jika terjadi fraud (penipuan) tidak akan dibebankan ke Merchant, namun akan dibebankan ke Issuer Bank, oleh karena itu Merchant akan awan jika terjadi fraud pada transaksi 3D secure.
+- Untuk pelanggan, transaksi lebih aman. Hal ini dikarenakan setiap pelanggan perlu melakukan autentikasi one time token ketika melakukan transaksi, sehingga jika pelanggan bukan pemegang kartu kredit, maka otomatis transaksi akan gagal.
+- Untuk Acquiring dan Issuing Bank, lebih sedikit fraud (penipuan) dan chargebacks. Setiap chargebacks yang terjadi ketika fraud terjadi akan banyak memakan biaya operasional. Dengan menggunakan 3D Secure proses chargebacks dan fraud akan lebih minimal karena transaksi sangat aman.
+
+Kerugian 3D Secure untuk Merchant, Pelanggan dan Bank
+
+- Untuk Merchant, 3D secure akan membuat volume transaksi menurun, hal ini dikarenakan proses transaksi akan semakin panjang. Banyak pelanggan kadang malas untuk melakukan proses transaksi yang terlalu panjang. Bisa juga para proses transaksi terjadi error, seperti SMS tidak diterima oleh pelanggan, error saat autentikasi, dan lain-lain. Biasanya 3D secure bisa menurunkan 30% dari volumen transaksi.
+- Untuk pelangga, proses 3D secure akan membuat tidak nyaman, terutama dengan banyaknya proses yang harus dilakukan. Kebiasaan sering berganti-ganti nomor telpon pun bisa menjadi masalah jika menggunakan 3D secure.
+- Untuk Bank, sama seperti Merchant, otomatis volumen transaksi akan menurun.
+
+#### 4.3.1.3 Resiko Fraud untuk 3D Secure
+
+
+
+### 4.3.2 Transaksi Kartu Kredit 3D Secure
 
 | API           | Token Request Transaksi Kartu Kredit 3D Secure        |                                                          |
 |---------------|-------------------------------------------------------|----------------------------------------------------------|
@@ -292,7 +334,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit point menggunakan POSTM
 |               | ```gross_amount```                                    | Total harga transaksi                                    |
 |               | ```bank```                                            | [OPTIONAL] Nama acquiring bank (cimb, bni, atau mandiri) |
 
-### 4.3.2 Transaksi Kartu Kredit 3D Secure Installment
+### 4.3.3 Transaksi Kartu Kredit 3D Secure Installment
 
 | API           | Token Request Transaksi Kartu Kredit 3D Secure Installment           |                                                                               |
 |---------------|-------------------------------------------------------|-------------------------------------------------------------------------------|
@@ -310,7 +352,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit point menggunakan POSTM
 |               | ```installment```                                     | Harus ```true```                                                              |
 |               | ```installment_term```                                | Bulan installment, misal 3 (untuk 3 bulan cicilan), 6 (untuk 6 bulan cicilan) |
 
-### 4.3.3 Transaksi Kartu Kredit 3D Secure Point
+### 4.3.4 Transaksi Kartu Kredit 3D Secure Point
 
 | API           | Token Request Transaksi Kartu Kredit 3D Secure Point           |                                                          |
 |---------------|-------------------------------------------------------|----------------------------------------------------------|
@@ -331,26 +373,13 @@ Sekarang kita akan coba melakukan transaksi kartu kredit point menggunakan POSTM
 
 ## 4.5 Transaksi Kartu Kredit Two Click Button 
 
-## 4.6 Demo Screencast Transaksi Kartu Kredit
+## 4.6 Menggunakan Veritrans JavaScript Client
 
-Berikut adalah screencast demo transaksi kartu kredit yang saya buat memanfaatkan plugin POSTMAN Google Chrome dan server sandbox Veritrans Indonesia.
+### 4.6.1 Menggunakan Veritrans JS untuk Transaksi Kartu Kredit
 
-Transaksi Kartu Kredit
+### 4.6.2 Menggunakan Veritrans JS untuk Transaksi Kartu Kredit 3D Secure
 
-- Transaksi Kartu Kredit
-- Transaksi Kartu Kredit Installment
-- Transaksi Kartu Kredit Point
-
-Transaksi Kartu Kredit 3D Secure
-
-- Transaksi Kartu Kredit 3D Secure
-- Transaksi Kartu Kredit 3D Secure Installment
-- Transaksi Kartu Kredit 3D Secure Point
-
-Transaksi Click Button
-
-- Transaksi Kartu Kredit One Click Button
-- Transaksi Kartu Kredit Two Click Button
+### 4.6.3 Menggunakan Veritrans JS untuk Transaksi Kartu Kredit Two Click Button
 
 ==> [Pengenalan Callback & Notification](../05-callback-notification/README.md)
 
