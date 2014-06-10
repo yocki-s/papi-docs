@@ -834,6 +834,120 @@ Sekarang kita akan coba melakukan transaksi kartu kredit one click button menggu
 
 ## 4.5 Transaksi Kartu Kredit Two Click Button 
 
+Selain transaksi one click button, salah satu feature yang menarik yang disediakan oleh Veritrans adalah two click button. Yang jadi pertanyaan adalah apa itu transaksi two click button?
+
+### 4.5.1 Apa itu Two Click Button?
+
+Transaksi Two Click Button sebenarnya adalah feature menarik yang disediakan oleh Veritrans untuk mempermudah transaksi kartu kredit normal. Semua transaksi two click button sebenarnya adalah transaksi kartu kredit normal. Lantas seperti apa transaksi two click button?
+
+Transaksi two click button merupakan transaksi yang mirip seperti one click button. Transaksi two click button hanya dapat dilakukan jika Merchant telah memiliki ```saved_token_id``` dari transaksi pertama 3D secure. Yang membedakan dengan transaksi one click button adalah, untuk transaksi two click button, pelanggan perlu memasukkan data cvv. Walaupun lebih ribet dibandingkan dengan one click button, namun transaksi two click button lebih ringkas dari transaksi normal, karena hanya perlu memasukkan data cvv pada transaksi selanjutnya, sedangkan transaksi normal harus memasukkan seluruh data kartu kredit setiap kali melakukan transaksi.
+
+### 4.5.2 Tahapan Transaksi Two Click Button
+
+Tahapan transaksi two click button sebenarnya sama dengan one click button, yang membedakan adalah sebelum tahapan Charge Request setelah mendapatkan ```saved_token_id```, merchant harus melakukan Token Request CVV.
+
+#### 4.5.2.1 Token Request CVV
+
+Token Request CVV adalah tahapan dimana data cvv di kirim ke Veritrans dan Veritrans akan mengembalikan token cvv id. Berikut adalah spesifikasi Token Request CVV :
+
+
+| API           | Token Request CVV Two Click Button           |                                                                               |
+|---------------|-------------------------------------------------------|-------------------------------------------------------------------------------|
+| HTTP Method   | GET                                                   |                                                                               |
+| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                                               |
+|               | Production : https://api.veritrans.co.id/v2/token     |                                                                               |
+| URL Parameter | ```card_cvv```                                     | Nomor CVV Kartu Kredit                                                            |
+|               | ```client_key```                                      | Client Key Merchant                                                           |
+|               | ```two_click```                                | Harus bernilai ```true``` |
+
+Berikut adalah contoh Token CVV Response :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, success request new token",
+    "token_id": "9a09ad9e-9c90-4c2d-bce7-56eaa2f9b315"
+}
+```
+
+> Perlu diketahui jika Token CVV hanya bisa digunakan untuk sekali transaksi, sehingga untuk setiap transaksi Merchant harus membuat token cvv lagi. Namun ini lebih baik dibandingkan harus memasukkan seluruh data kartu kredit.
+
+#### 4.5.2.2 Charge Request Two Click
+
+| API         | Charge Request Transaksi Kartu Kredit Two Click Button      |                           |
+|-------------|--------------------------------------------------------|---------------------------|
+| HTTP Method | POST                                                   |                           |
+| Headers     | Content-Type                                           | application/json          |
+|             | Accept                                                 | application/json          |
+|             | Authorization                                          | Basic BASE64(```server_key```:) |
+| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+|             | Production : https://api.veritrans.co.id/v2/charge     |                           |
+
+Body (Contoh) : 
+
+ ```json
+{
+      "payment_type": "credit_card",
+      "transaction_details": {
+        "order_id": "138898199044",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "eko",
+        "last_name" : "khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@veritrans.co.id",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345",
+          "country_code" : "JPN"
+        }
+      },
+      "credit_card": {
+        "token_id": "41111106438ffc-b169-424f-bf9f-e277c56a8972",
+        "token_cvv_id": "9a09ad9e-9c90-4c2d-bce7-56eaa2f9b315"
+      }
+    }
+``` 
+
+Perlu diperhatikan untuk parameter ```token_id``` harus berisi ```saved_token_id``` hasil dari transaksi 3D secure pertama kali, sedangkan parameter ```token_cvv_id``` harus berisi token yang didapat dari tahapan Token Request CVV. Berikut adalah contoh hasil transaksi kartu kredit two click button.
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card transaction is successful",
+    "transaction_id": "1bc66f26-d9aa-4e3f-b6f4-79e1d2209474",
+    "order_id": "138898saf199045",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 18:56:58",
+    "transaction_status": "capture",
+    "gross_amount": "1000000.00"
+}
+```
+
+### 4.5.3 Acquiring Bank Apa yang Mendukung Two Click Button?
+
+Karena sebenarnya two click button adalah transaksi kartu kredit normal, jadi semua acquiring bank yang mendukung 3D secure bisa menggunakan transaksi two click button. Kenapa harus bank yang mendukung 3D secure? Karena transaksi pertama kali sebelum transaksi two click button harus transaksi 3D secure.
+
+### 4.5.4 Contoh Transaksi Kartu Kredit Two Click Button
+
+Sekarang kita akan coba melakukan transaksi kartu kredit two click button menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
+
+- [Transaksi Kartu Kredit Two Click Button Menggunakan POSTMAN](transaksi-kartu-kredit-two-click-button.md)
+- Screencast Transaksi Kartu Two Click Button Menggunakan POSTMAN
+
 ## 4.6 Menggunakan Veritrans JavaScript Client
 
 ### 4.6.1 Menggunakan Veritrans JS untuk Transaksi Kartu Kredit
