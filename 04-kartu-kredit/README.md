@@ -276,8 +276,6 @@ Sekarang kita akan coba melakukan transaksi kartu kredit point menggunakan POSTM
 
 ## 4.3 Transaksi Kartu Kredit 3D Secure
 
-[![Introduction to 3D Secure](../images/image-013.png)](http://www.slideshare.net/eecchhoo/introduction-to-3-d-secure-v1)
-
 ### 4.3.1 Pengenalan 3D Secure
 
 Jika Anda belum mengerti tentang 3D Secure, yuk kita bahas apa itu 3D Secure. 3D Secure adalah kepanjangan dari 3 Domain Secure. 3D Secure di buat untuk agar belanja online lebih aman dengan cara meng-autentikasi pemegang kartu kredit pada saat melakukan pembayaran. 3D Secure lebih dikenal sebagai "Verified by Visa" untuk Visa atau "MasterCard SecureCode" untuk MasterCard.
