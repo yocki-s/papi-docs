@@ -759,6 +759,72 @@ Jika transaksi sukses, maka Veritrans akan memberikan Charge Response seperti be
 
 Merchant akan mendapatkan data one click token di parameter ```saved_token_id``` yang dapat disimpan di server Merchant untuk melakukan transaksi selanjutnya untuk pelanggan tersebut. Sampai kapan one click token dapat digunakan? Merchant bisa melihat masa valid one click token pada parameter ```saved_token_id_expired_at```.
 
+### 4.4.2 Transaksi Kartu Kredit One Click Button
+
+Untuk melakukan transaksi kartu kredit one click button, sama seperti transaksi normal dan transaksi 3D secure. Yang membedakan adalah kita tidak perlu melakukan Token Request lagi, cukup gunakan Charge Request langsung menggunakan ```token_id``` yang didapat dari ```saved_token_id``` pada transaksi 3d secure pertama kali.
+
+| API         | Charge Request Transaksi Kartu Kredit One Click Button      |                           |
+|-------------|--------------------------------------------------------|---------------------------|
+| HTTP Method | POST                                                   |                           |
+| Headers     | Content-Type                                           | application/json          |
+|             | Accept                                                 | application/json          |
+|             | Authorization                                          | Basic BASE64(```server_key```:) |
+| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+|             | Production : https://api.veritrans.co.id/v2/charge     |                           |
+
+Body (Contoh) : 
+
+ ```json
+{
+      "payment_type": "credit_card",
+      "transaction_details": {
+        "order_id": "138898199044",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "eko",
+        "last_name" : "khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@veritrans.co.id",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345",
+          "country_code" : "JPN"
+        }
+      },
+      "credit_card": {
+        "token_id": "41111106438ffc-b169-424f-bf9f-e277c56a8972",
+      }
+    }
+``` 
+
+Pastikan ```token_id``` yang dikirim adalah ```saved_token_id``` yang didapat dari transaksi 3d secure pertama kali. Berikut adalah contoh response transaksi one click button :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card transaction is successful",
+    "transaction_id": "cf496679-587d-40b6-9298-0b5703ea3972",
+    "order_id": "138898145645699045",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 18:05:41",
+    "transaction_status": "capture",
+    "gross_amount": "1000000.00"
+}
+```
+
 ## 4.5 Transaksi Kartu Kredit Two Click Button 
 
 ## 4.6 Menggunakan Veritrans JavaScript Client
