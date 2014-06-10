@@ -260,7 +260,7 @@ Body (Contoh) :
       },
       "credit_card": {
         "token_id": "4111113ac32dc1-d528-4eda-a83e-e468e5e02a86",
-        "redeem_amount" : 5000
+        "point_redeem_amount" : 5000
       }
     }
 ``` 
@@ -468,6 +468,21 @@ Berikut adalah contoh Charge Response yang didapat oleh Merchant :
 |               | ```installment```                                     | Harus ```true```                                                              |
 |               | ```installment_term```                                | Bulan installment, misal 3 (untuk 3 bulan cicilan), 6 (untuk 6 bulan cicilan) |
 
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card 3D Secure Installment transaction is successful",
+    "transaction_id": "34877ce8-66f0-49ba-9802-d47d8d3f7503",
+    "order_id": "46346",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 16:52:50",
+    "transaction_status": "capture",
+    "fraud_status": "accept",
+    "masked_card": "411111-1111",
+    "gross_amount": "1000000.00"
+}
+```
+
 ### 4.3.4 Transaksi Kartu Kredit 3D Secure Point
 
 | API           | Token Request Transaksi Kartu Kredit 3D Secure Point           |                                                          |
@@ -484,6 +499,21 @@ Berikut adalah contoh Charge Response yang didapat oleh Merchant :
 |               | ```gross_amount```                                    | Total harga transaksi                                    |
 |               | ```bank```                                            | [OPTIONAL] Nama acquiring bank (cimb, bni, atau mandiri) |
 |               | ```point```                                           | Harus ```true```                                         |
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card 3D Secure Point transaction is successful",
+    "transaction_id": "fd4872c4-88cd-48a0-af35-1113215d2569",
+    "order_id": "46346346",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 16:52:00",
+    "transaction_status": "capture",
+    "fraud_status": "accept",
+    "masked_card": "411111-1111",
+    "gross_amount": "1000000.00"
+}
+```
 
 ## 4.4 Transaksi Kartu Kredit One Click Button
 
