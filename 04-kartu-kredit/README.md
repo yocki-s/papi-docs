@@ -276,7 +276,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit point menggunakan POSTM
 
 ## 4.3 Transaksi Kartu Kredit 3D Secure
 
-[![Introduction to 3D Secure](../image/image-013.png)](http://www.slideshare.net/eecchhoo/introduction-to-3-d-secure-v1)
+[![Introduction to 3D Secure](../images/image-013.png)](http://www.slideshare.net/eecchhoo/introduction-to-3-d-secure-v1)
 
 ### 4.3.1 Pengenalan 3D Secure
 
