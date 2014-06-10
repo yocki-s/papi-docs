@@ -825,6 +825,13 @@ Pastikan ```token_id``` yang dikirim adalah ```saved_token_id``` yang didapat da
 }
 ```
 
+### 4.4.3 Contoh Transaksi Kartu Kredit One Click Button
+
+Sekarang kita akan coba melakukan transaksi kartu kredit one click button menggunakan POSTMAN. Silahkan ikuti tutorial berikut :
+
+- [Transaksi Kartu Kredit One Click Button Menggunakan POSTMAN](transaksi-kartu-kredit-one-click-button.md)
+- Screencast Transaksi Kartu One Click Button Menggunakan POSTMAN
+
 ## 4.5 Transaksi Kartu Kredit Two Click Button 
 
 ## 4.6 Menggunakan Veritrans JavaScript Client
