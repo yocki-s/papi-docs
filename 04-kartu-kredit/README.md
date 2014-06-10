@@ -346,6 +346,10 @@ Untuk tahapan Charge Request, sama saja dengan transaksi kartu kredit non 3D sec
 
 ### 4.3.2 Transaksi Kartu Kredit 3D Secure
 
+#### 4.3.2.1 Token Request Transaksi Kartu Kredit 3D Secure
+
+Token Request untuk transaksi kartu kredit 3D secure sedikit berbeda dengan kartu kredit normal. Berikut adalah spesifikasi untuk Token Request transaksi 3D Secure.
+
 | API           | Token Request Transaksi Kartu Kredit 3D Secure        |                                                          |
 |---------------|-------------------------------------------------------|----------------------------------------------------------|
 | HTTP Method   | GET                                                   |                                                          |
@@ -359,6 +363,92 @@ Untuk tahapan Charge Request, sama saja dengan transaksi kartu kredit non 3D sec
 |               | ```secure```                                          | Harus ```true```                                         |
 |               | ```gross_amount```                                    | Total harga transaksi                                    |
 |               | ```bank```                                            | [OPTIONAL] Nama acquiring bank (cimb, bni, atau mandiri) |
+
+Ada beberapa parameter tambahan yang diperlukan untuk transaksi 3D secure, yaitu ```secure```, ```gross_amount``` dan ```bank``` (khusus ```bank``` tidak wajib, alias optional).
+
+Parameter ```secure``` harus bernilai ```true``` untuk memberitahukan bahwa Token Request ini untuk transaksi 3D secure. Parameter ```gross_amount``` digunakan untuk menampilkan informasi di halaman issuer bank tentang total biaya transaksi yang akan dilakukan oleh pelanggan. Dan terakhir parameter ```bank``` dapat dikirim jika Merchant ingin menentukan sendiri bank mana yang akan digunakan sebagai acquiring bank.
+
+Response dari Token Request adalah contohnya sebagai berikut :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, success request new token",
+    "token_id": "411111-1111-3fe282c0-1eb8-4f74-91aa-7a23c4c66ef3",
+    "redirect_url": "https://api.sandbox.veritrans.co.id/v2/token/redirect/411111-1111-3fe282c0-1eb8-4f74-91aa-7a23c4c66ef3",
+    "bank": "bni"
+}
+```
+
+Selanjutnya Merchant perlu meneruskan transaksi ke halaman ```redirect_url``` yang diberikan di Token Response. Proses redirect url tersebut disarankan menggunakan popup dialog atau fancybox (Akan dijelaskan di sub-bab Veritrans JS).
+
+#### 4.3.2.2 Charge Request Transaksi Kartu Kredit 3D Secure
+
+Jika proses autentikasi telah selesai dan ```token_id``` otomatis sudah dapat digunakan. Maka untuk Charge Request transaksi 3D Secure sama dengan transaksi kartu kredit normal (non 3D secure).
+
+| API         | Charge Request Transaksi Kartu Kredit                  |                           |
+|-------------|--------------------------------------------------------|---------------------------|
+| HTTP Method | POST                                                   |                           |
+| Headers     | Content-Type                                           | application/json          |
+|             | Accept                                                 | application/json          |
+|             | Authorization                                          | Basic BASE64(```server_key```:) |
+| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+|             | Production : https://api.veritrans.co.id/v2/charge     |                           |
+
+Body (Contoh) : 
+
+ ```json
+{
+      "payment_type": "credit_card",
+      "transaction_details": {
+        "order_id": "138898199044",
+        "gross_amount": 1000000
+      },
+      "item_details": [
+        {
+          "id": "ITEM1",
+          "price": 10000,
+          "quantity": 100,
+          "name": "Mie Ayam Enak"
+        }
+      ],
+      "customer_details": {
+        "first_name" : "eko",
+        "last_name" : "khannedy",
+        "phone" : "0893534534",
+        "email": "eko.khannedy@veritrans.co.id",
+        "billing_address": {
+          "first_name": "Eko",
+          "last_name": "Khannedy",
+          "address": "Jalan Raya Kalijati",
+          "city": "Subang",
+          "postal_code": "41271",
+          "phone": "+6281 123 12345",
+          "country_code" : "JPN"
+        }
+      },
+      "credit_card": {
+        "token_id": "411111-1111-3fe282c0-1eb8-4f74-91aa-7a23c4c66ef3"
+      }
+    }
+``` 
+
+Berikut adalah contoh Charge Response yang didapat oleh Merchant :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, Credit Card 3D Secure transaction is successful",
+    "transaction_id": "7bf819f7-d805-481b-81b7-8686a2b9d555",
+    "order_id": "138823423598199045",
+    "payment_type": "credit_card",
+    "transaction_time": "2014-06-10 16:28:22",
+    "transaction_status": "capture",
+    "fraud_status": "accept",
+    "masked_card": "411111-1111",
+    "gross_amount": "1000000.00"
+}
+```
 
 ### 4.3.3 Transaksi Kartu Kredit 3D Secure Installment
 
