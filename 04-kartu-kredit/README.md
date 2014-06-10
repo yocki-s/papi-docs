@@ -391,5 +391,32 @@ Tahapan transaksi 3D Secure tidak sama dengan transaksi kartu kredit normal. Ada
 
 ### 4.6.3 Menggunakan Veritrans JS untuk Transaksi Kartu Kredit Two Click Button
 
+## 4.7 Contoh Data Sandbox Veritrans
+
+Jika Anda ingin melakukan simulasi transaksi di sistem Sandbox Veritrans Indonesia, kita bisa menggunakan contoh data yang sediakan oleh Veritrans Indonesia.
+
+### 4.7.1 Contoh Data Kartu Kredit
+
+Berikut adalah contoh data kartu kredit yang bisa digunakan untuk melakukan transaksi di Sandbox Veritrans Indonesia.
+
+- 4111111111111111 : Accept
+- 4012000033330026 : Deny
+
+### 4.7.2 Contoh Data Kartu Kredit 3D Secure
+
+Berikut adalah contoh data kartu kredit 3D secure yang bisa digunakan untuk melakukan transaksi di Sandbox Veritrans Indonesia.
+
+- 4111111111111111 : ECI 5
+- 4012000033330026 : ECI 6
+- 4444414444444441 : ECI 7
+
+### 4.7.3 Contoh Data Fraud Status
+
+Berikut adalah contoh data ```first_name``` yang bisa digunakan untuk simulasi ```fraud_status``` di Sandbox Veritrans Indonesia.
+
+- Eko : Accept
+- Dichi : Challenge
+- Chandra : Deny
+
 ==> [Pengenalan Callback & Notification](../05-callback-notification/README.md)
 
