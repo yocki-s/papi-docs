@@ -954,8 +954,9 @@ Salah satu target utama Veritrans Payment API adalah untuk website toko online, 
 
 Berikut adalah lokasi Veritrans JavaScript Client yang bisa kita gunakan untuk sandbox dan production.
 
-| Sandbox    | https://api.sandbox.veritrans.co.id/v2/assets/js/veritrans.min.js |
+|            | Veritrans JS Endpoint                                             |
 |------------|-------------------------------------------------------------------|
+| Sandbox    | https://api.sandbox.veritrans.co.id/v2/assets/js/veritrans.min.js |
 | Production | https://api.veritrans.co.id/v2/assets/js/veritrans.min.js         |
 
 Berikut adalah contoh penggunaan Veritrans JavaScript Client :
