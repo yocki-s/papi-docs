@@ -950,11 +950,129 @@ Sekarang kita akan coba melakukan transaksi kartu kredit two click button menggu
 
 ## 4.6 Menggunakan Veritrans JavaScript Client
 
+Salah satu target utama Veritrans Payment API adalah untuk website toko online, oleh karena itu untuk mempermudah integrasi transaksi kartu kredit, Veritrans menyediakan JavaScript Client untuk melakukan Token Request.
+
+Berikut adalah lokasi Veritrans JavaScript Client yang bisa kita gunakan untuk sandbox dan production.
+
+| Sandbox    | https://api.sandbox.veritrans.co.id/v2/assets/js/veritrans.min.js |
+|------------|-------------------------------------------------------------------|
+| Production | https://api.veritrans.co.id/v2/assets/js/veritrans.min.js         |
+
+Berikut adalah contoh penggunaan Veritrans JavaScript Client :
+
+```html
+	<script src="https://api.sandbox.veritrans.co.id/v2/assets/js/veritrans.min.js"></script>
+```
+
+```javascript
+    function _payment() {
+    	// Client key merchant
+        Veritrans.client_key = "e668b029-db9d-46fd-b863-e9056f404204";
+
+        // Token endpoint, pastikan menuju sandbox atau production
+        Veritrans.url = "https://api.sandbox.veritrans.co.id/v2/token";
+
+		// Melakukan proses token request, liat sub-bab selanjutnya
+        Veritrans.token(_request, _callback);
+    }
+```
+
 ### 4.6.1 Menggunakan Veritrans JS untuk Transaksi Kartu Kredit
+
+Sekarang kita akan bahas tentang Veritrans JS untuk transaksi kartu kredit normal, point dan installment. Penggunaan Veritrans JS sebenarnya sangat mudah, kita hanya perlu menggunakan ```Veritrans.token(_request, _callback)``` untuk melakukan token request, parameter ```_request``` merupakan function yang mengembalikan data object request,  sedangkan ```_callback``` merupakan function callback token response. Berikut adalah contohnya :
+
+```javascript
+    function _callback(response) {
+        if (response.status_code == '200') {
+			// Token Request Success
+			alert(response.token_id);
+        } else {
+            // Token Request Failed
+            alert(response.status_message);
+        }
+    }
+
+    function _request() {
+        return {
+            "card_number": "4111111111111111",
+            "card_exp_month": "10",
+            "card_exp_year": "2018",
+            "card_cvv": "123"
+        }
+    }
+```
 
 ### 4.6.2 Menggunakan Veritrans JS untuk Transaksi Kartu Kredit 3D Secure
 
+Untuk transaksi kartu kredit 3D secure, yang berbeda dengan transaksi kartu kredit normal adalah tambahan request pada function ```_request``` dan handler callback untuk membuat dialog autentikasi 3D secure. Berikut adalah contohnya :
+
+```javascript
+    function _callback(response) {
+        if (response.redirect_url) {
+            // Transaksi 3D secure, silahkan buka redirect_url
+            _open_dialog(response.redirect_url); // Hanya contoh
+        } else if (response.status_code == '200') {
+            // Sukses 3D Secure Authentication
+			alert(response.token_id);
+        } else {
+            // Gagal Token Request atau Gagal Authentication
+			alert(response.status_message);
+        }
+    }
+
+    function _request() {
+        return {
+            "card_number": "4111111111111111",
+            "card_exp_month": "10",
+            "card_exp_year": "2018",
+            "card_cvv": "123",
+            
+            // Wajib untuk 3D Secure Transaction
+            "secure": true,
+            "gross_amount": 10000,
+            
+            // Untuk 3D Secure Installment
+            "installment" : true,
+            "installment_term" : 6,
+            
+            // Untuk 3D Secure Point
+            "point" : true
+        }
+    }
+```
+
 ### 4.6.3 Menggunakan Veritrans JS untuk Transaksi Kartu Kredit Two Click Button
+
+Seperti yang telah dibahas sebelumnya, bahwa di transaksi two click button, terdapat tahapan Token Request Cvv. Hal itupun bisa dilakukan menggunakan Veritrans JS Client. Berbeda dengan token request biasanya yang menggunakan function ```Veritrans.token(...)```, untuk token request cvv, menggunakan ```Veritrans.tokenCvv(...)``` seperti pada contoh berikut ini :
+
+```javascript
+    function _payment() {
+    	// Client key merchant
+        Veritrans.client_key = "e668b029-db9d-46fd-b863-e9056f404204";
+
+        // Token endpoint, pastikan menuju sandbox atau production
+        Veritrans.url = "https://api.sandbox.veritrans.co.id/v2/token";
+
+		// Token Request CVV
+        Veritrans.tokenCvv(_request, _callback);
+    }
+    
+	function _callback(response) {
+        if (response.status_code == '200') {
+            // success token cvv
+			alert(response.token_id);
+        } else {
+            // failed request token cvv
+            alert(response.status_message);
+        }
+    }
+
+    function _request() {
+        return {
+            "card_cvv": "123"
+        }
+    }
+```
 
 ## 4.7 Contoh Data Sandbox Veritrans
 
