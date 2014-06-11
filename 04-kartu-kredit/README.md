@@ -1083,24 +1083,30 @@ Jika Anda ingin melakukan simulasi transaksi di sistem Sandbox Veritrans Indones
 
 Berikut adalah contoh data kartu kredit yang bisa digunakan untuk melakukan transaksi di Sandbox Veritrans Indonesia.
 
-- 4111111111111111 : Accept
-- 4012000033330026 : Deny
+| ```card_number``` | ```transaction_status``` |
+|-------------------|--------------------------|
+| 4111111111111111  | accept                   |
+| 4012000033330026  | deny                     |
 
 ### 4.7.2 Contoh Data Kartu Kredit 3D Secure
 
 Berikut adalah contoh data kartu kredit 3D secure yang bisa digunakan untuk melakukan transaksi di Sandbox Veritrans Indonesia.
 
-- 4111111111111111 : ECI 5
-- 4012000033330026 : ECI 6
-- 4444414444444441 : ECI 7
+| ```card_number``` | Ecommerce Indicator |
+|-------------------|---------------------|
+| 4111111111111111  | ECI 5               |
+| 4012000033330026  | ECI 6               |
+| 4444414444444441  | ECI 7               |
 
 ### 4.7.3 Contoh Data Fraud Status
 
 Berikut adalah contoh data ```first_name``` yang bisa digunakan untuk simulasi ```fraud_status``` di Sandbox Veritrans Indonesia.
 
-- Eko : Accept
-- Dichi : Challenge
-- Chandra : Deny
+| ```first_name``` | ```fraud_status``` |
+|------------------|--------------------|
+| Eko              | accept             |
+| Dichi            | challenge          |
+| Chandra          | deny               |
 
 ==> [Pengenalan Callback & Notification](../05-callback-notification/README.md)
 
