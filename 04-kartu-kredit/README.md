@@ -48,7 +48,7 @@ Seperti yang telah dijelaskan sebelumnya, untuk transaksi kartu kredit, terdiri 
 | API           | Token Request Transaksi Kartu Kredit                  |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
 | HTTP Method   | GET                                                   |                                   |
-| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
+| Endpoint      | Sandbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
 |               | Production : https://api.veritrans.co.id/v2/token     |                                   |
 | URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                |
 |               | ```card_cvv```                                        | Nomor CVV Kartu Kredit            |
@@ -76,7 +76,7 @@ Veritrans Payment API akan memberikan ```token_id``` yang bisa kita gunakan untu
 | Headers     | Content-Type                                           | application/json          |
 |             | Accept                                                 | application/json          |
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
-| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+| Endpoint    | Sandbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
 
 Body (Contoh) : 
@@ -152,7 +152,7 @@ Token Request dan Token Response untuk transaksi kartu kredit installment sama d
 | API           | Token Request Transaksi Kartu Kredit Installment      |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
 | HTTP Method   | GET                                                   |                                   |
-| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
+| Endpoint      | Sandbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
 |               | Production : https://api.veritrans.co.id/v2/token     |                                   |
 | URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                |
 |               | ```card_cvv```                                        | Nomor CVV Kartu Kredit            |
@@ -168,7 +168,7 @@ Token Request dan Token Response untuk transaksi kartu kredit installment sama d
 | Headers     | Content-Type                                           | application/json          |
 |             | Accept                                                 | application/json          |
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
-| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+| Endpoint    | Sandbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
 
 Body (Contoh) : 
@@ -245,7 +245,7 @@ Token Request dan Token Response untuk transaksi kartu kredit point sama dengan 
 | API           | Token Request Transaksi Kartu Kredit Point            |                                   |
 |---------------|-------------------------------------------------------|-----------------------------------|
 | HTTP Method   | GET                                                   |                                   |
-| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
+| Endpoint      | Sandbox : https://api.sandbox.veritrans.co.id/v2/token |                                   |
 |               | Production : https://api.veritrans.co.id/v2/token     |                                   |
 | URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                |
 |               | ```card_cvv```                                        | Nomor CVV Kartu Kredit            |
@@ -261,7 +261,7 @@ Token Request dan Token Response untuk transaksi kartu kredit point sama dengan 
 | Headers     | Content-Type                                           | application/json          |
 |             | Accept                                                 | application/json          |
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
-| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+| Endpoint    | Sandbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
 
 Body (Contoh) : 
@@ -408,7 +408,7 @@ Token Request untuk transaksi kartu kredit 3D secure sedikit berbeda dengan kart
 | API           | Token Request Transaksi Kartu Kredit 3D Secure        |                                                          |
 |---------------|-------------------------------------------------------|----------------------------------------------------------|
 | HTTP Method   | GET                                                   |                                                          |
-| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                          |
+| Endpoint      | Sandbox : https://api.sandbox.veritrans.co.id/v2/token |                                                          |
 |               | Production : https://api.veritrans.co.id/v2/token     |                                                          |
 | URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                                       |
 |               | ```card_cvv```                                        | Nomor CVV Kartu Kredit                                   |
@@ -447,7 +447,7 @@ Jika proses autentikasi telah selesai dan ```token_id``` otomatis sudah dapat di
 | Headers     | Content-Type                                           | application/json          |
 |             | Accept                                                 | application/json          |
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
-| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+| Endpoint    | Sandbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
 
 Body (Contoh) : 
@@ -520,7 +520,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit 3D secure menggunakan P
 | API           | Token Request Transaksi Kartu Kredit 3D Secure Installment           |                                                                               |
 |---------------|-------------------------------------------------------|-------------------------------------------------------------------------------|
 | HTTP Method   | GET                                                   |                                                                               |
-| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                                               |
+| Endpoint      | Sandbox : https://api.sandbox.veritrans.co.id/v2/token |                                                                               |
 |               | Production : https://api.veritrans.co.id/v2/token     |                                                                               |
 | URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                                                            |
 |               | ```card_cvv```                                        | Nomor CVV Kartu Kredit                                                        |
@@ -545,7 +545,7 @@ Untuk Token Response dari Token Request installment, sama dengan transaksi 3D se
 | Headers     | Content-Type                                           | application/json          |
 |             | Accept                                                 | application/json          |
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
-| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+| Endpoint    | Sandbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
 
 Body (Contoh) : 
@@ -621,7 +621,7 @@ Sekarang kita akan coba melakukan transaksi kartu kredit 3D secure installment m
 | API           | Token Request Transaksi Kartu Kredit 3D Secure Point           |                                                          |
 |---------------|-------------------------------------------------------|----------------------------------------------------------|
 | HTTP Method   | GET                                                   |                                                          |
-| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                          |
+| Endpoint      | Sandbox : https://api.sandbox.veritrans.co.id/v2/token |                                                          |
 |               | Production : https://api.veritrans.co.id/v2/token     |                                                          |
 | URL Parameter | ```card_number```                                     | Nomor Kartu Kredit                                       |
 |               | ```card_cvv```                                        | Nomor CVV Kartu Kredit                                   |
@@ -645,7 +645,7 @@ Untuk Token Response dari Token Request point, sama dengan transaksi 3D secure b
 | Headers     | Content-Type                                           | application/json          |
 |             | Accept                                                 | application/json          |
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
-| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+| Endpoint    | Sandbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
 
 Body (Contoh) : 
@@ -769,7 +769,7 @@ Untuk melakukan transaksi kartu kredit one click button, sama seperti transaksi 
 | Headers     | Content-Type                                           | application/json          |
 |             | Accept                                                 | application/json          |
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
-| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+| Endpoint    | Sandbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
 
 Body (Contoh) : 
@@ -854,7 +854,7 @@ Token Request CVV adalah tahapan dimana data cvv di kirim ke Veritrans dan Verit
 | API           | Token Request CVV Two Click Button           |                                                                               |
 |---------------|-------------------------------------------------------|-------------------------------------------------------------------------------|
 | HTTP Method   | GET                                                   |                                                                               |
-| Endpoint      | Sanbox : https://api.sandbox.veritrans.co.id/v2/token |                                                                               |
+| Endpoint      | Sandbox : https://api.sandbox.veritrans.co.id/v2/token |                                                                               |
 |               | Production : https://api.veritrans.co.id/v2/token     |                                                                               |
 | URL Parameter | ```card_cvv```                                     | Nomor CVV Kartu Kredit                                                            |
 |               | ```client_key```                                      | Client Key Merchant                                                           |
@@ -880,7 +880,7 @@ Berikut adalah contoh Token CVV Response :
 | Headers     | Content-Type                                           | application/json          |
 |             | Accept                                                 | application/json          |
 |             | Authorization                                          | Basic BASE64(```server_key```:) |
-| Endpoint    | Sanbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
+| Endpoint    | Sandbox : https://api.sandbox.veritrans.co.id/v2/charge |                           |
 |             | Production : https://api.veritrans.co.id/v2/charge     |                           |
 
 Body (Contoh) : 
