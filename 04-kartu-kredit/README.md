@@ -1098,7 +1098,7 @@ Lantas apakah merchant bisa menentukan sendiri acquiring bank mana yang bisa dig
 
 JSON diatas berarti transaksi tersebut akan dikirim ke acquiring bank BNI. Fitur ini cocok jika merchant misal punya kerja sama yang menguntungkan dengan salah satu acquiring bank, seperti diskon dari acquiring bank, dan lain-lain.
 
-#### 4.7.1.1 Menentukan Acquiting Bank untuk 3D Secure
+#### 4.7.1.1 Menentukan Acquiring Bank untuk 3D Secure
 
 Khusus untuk transaksi kartu kredit 3D secure, sebelumnya telah dibahas jika penentuan acquiring bank adalah pada saat token request dengan menambahkan parameter ```bank```, bukan pada saat charge request. Bahkan sejak awal, merchant bisa tahu, akan dikirim kemana transaksi tersebut dari token response :
 
