@@ -1075,11 +1075,114 @@ Seperti yang telah dibahas sebelumnya, bahwa di transaksi two click button, terd
     }
 ```
 
-## 4.7 Contoh Data Sandbox Veritrans
+## 4.7 Fitur Lain di Transaksi Kartu Kredit
+
+Pada bagian ini kita akan bahas tentang fitur-fitur lain yang bisa kita gunakan dalam transaksi kartu kredit.
+
+### 4.7.1 Menentukan Acquiring Bank Secara Manual
+
+Sebelumnya kita sudah bahas cara melakukan Charge Request ke Veritrans Payment API. Pertanyaannya, jika kita melakukan kerja sama dengan lebih satu acquiring bank misal BNI dan MANDIRI, kemanakah Veritrans Payment API akan mengirim data transaksi kita? Jawabannya adalah terserah Veritrans Payment API, merchant tidak akan tahu kemana transaksi akan dikirim.
+
+Lantas apakah merchant bisa menentukan sendiri acquiring bank mana yang bisa digunakan? Yup tentu saja bisa! Bagaimana caranya? Caranya adalah merchant bisa menambahkan parameter ```bank``` pada data json Charge Request yang dikirim ke Veritrans Payment API seperti pada json dibawah ini :
+
+```json
+{
+      "payment_type": "credit_card",
+      ...,
+      "credit_card": {
+        "token_id": "4111113ac32dc1-d528-4eda-a83e-e468e5e02a86",
+        "bank" : "bni"
+      }
+    }
+```
+
+JSON diatas berarti transaksi tersebut akan dikirim ke acquiring bank BNI. Fitur ini cocok jika merchant misal punya kerja sama yang menguntungkan dengan salah satu acquiring bank, seperti diskon dari acquiring bank, dan lain-lain.
+
+#### 4.7.1.1 Menentukan Acquiting Bank untuk 3D Secure
+
+Khusus untuk transaksi kartu kredit 3D secure, sebelumnya telah dibahas jika penentuan acquiring bank adalah pada saat token request dengan menambahkan parameter ```bank```, bukan pada saat charge request. Bahkan sejak awal, merchant bisa tahu, akan dikirim kemana transaksi tersebut dari token response :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, success request new token",
+    "token_id": "411111-1111-3fe282c0-1eb8-4f74-91aa-7a23c4c66ef3",
+    "redirect_url": "https://api.sandbox.veritrans.co.id/v2/token/redirect/411111-1111-3fe282c0-1eb8-4f74-91aa-7a23c4c66ef3",
+    "bank": "bni"
+}
+```
+
+Transaksi tersebut akan dikirim kemana bisa dilihat di parameter JSON ```bank``` di token response.
+
+### 4.7.2 Automatic Retry Transaction
+
+Sebenarnya sangat dianjurkan jika merchant tidak menentukan acquiring bank nya secara manual, kecuali punya alasan tertentu yang menguntungkan merchant, kenapa? Hal ini dikarenakan Veritrans Payment API memiliki kemampuan melakukan retry transaction jika misal transaksi gagal dikirim ke acquiring bank pertama, maka Veritrans Payment API akan otomatis melakukan retry transaction ke acquiring bank kedua. Dengan begitu error koneksi ke bank bisa diminimalisir.
+
+Perlu diingat jika fitur ini hanya bisa dilakukan pada merchant yang telah bekerja sama dengan acquring bank lebih dari satu, misal dengan BNI dan CIMB. Jika merchant hanya melakukan kerja sama dengan satu acquring bank, otomatis fitur ini tidak bisa berjalan.
+
+> Fitur ini hanya berjalan untuk transaksi kartu kredir normal, tidak untuk kartu kredit 3D secure, hal ini dikarenakan untuk 3D secure, acquiring bank harus sudah ditentukan pada saat token request.
+
+### 4.7.3 Bin Promo
+
+Bin Promo merupakan fitur dimana merchant bisa menentukan kartu kredit apa saja yang boleh melakukan transaksi. Biasanya hal ini dikarenakan adanya kerja sama antara merchant dengan pihak acquiring bank. Misal semua data kartu kredit dengan bin 41111, 42222, 43333 akan mendapat diskon 20%, bagaimana untuk melakukan hal ini? Padahal seperti kita ketahui jika data kartu kredit tidak boleh masuk ke server merchant.
+
+#### 4.7.3.1 Bin Promo Secara Manual
+
+Pengencekan nomor bin kartu kredit sebenarnya bisa dilakukan langsung oleh merchant? Bagaimana caranya? Bukannya data kartu kredit tidak bisa masuk ke server merchant? Yup memang benar. Namun coba perhatikan ```token_id``` ini :
+
+```json
+{
+    "status_code": "200",
+    "status_message": "OK, success request new token",
+    "token_id": "411111-1111-3fe282c0-1eb8-4f74-91aa-7a23c4c66ef3"
+}
+```
+
+Jika diperhatikan, sebenarnya ```token_id``` adalah kombinasi dari masking kartu kredit dan unique id.
+
+```
+token_id = (6 digit awal cc)-(4 digit akhir cc)-(unique id)
+```
+
+Jadi jika pengecekan bin hanya sampai 6 digit awal nomor kartu kredit, maka hal ini bisa dilakukan di merchant secara manual. Namun Veritrans Payment API juga menyediakan fitur pengencekan nomor bin jika merchant tidak ingin melakukannya secara manual, bahkan jika dilakukan di Veritrans Payment API, hal tersebut bisa sampai 8 digit awal normor kartu kredit.
+
+#### 4.7.3.2 Bin Promo Secara Otomatis
+
+Untuk melakukan pengecekan nomor bin kartu kredit secara otomatis, hal tersebut bisa dilakukan dengan mengirim data bin pada saat Charge Request.
+
+```json
+{
+      "payment_type": "credit_card",
+      ...,
+      "credit_card": {
+        "token_id": "411111-1111-c4c0dadf-ed3a-43b7-8b6b-d647d8010ca5",
+        "bins" : [
+          "45555",
+          "46666"
+        ]
+      }
+    }
+```
+
+Data bin disimpan dalam json attribut ```bins``` berupa array. Data bin bisa dimasukkan sampai maksimal adalah 100 data bin.
+
+Dengan begitu, Veritrans Payment API akan melakukan pengecekan nomor bin kartu kredit yang melakukan transaksi, jika nomor kartu kredit tidak cocok dengan nomor bin yang tersedia, maka transaksi akan ditolak dengan pesan kesalahan seperti berikut :
+
+```json
+{
+    "status_code": "400",
+    "status_message": "Validation Error, [credit card number does not match with the list of credit_card.bins]",
+    "validation_messages": [
+        "credit card number does not match with the list of credit_card.bins"
+    ]
+}
+```
+
+## 4.8 Contoh Data Sandbox Veritrans
 
 Jika Anda ingin melakukan simulasi transaksi di sistem Sandbox Veritrans Indonesia, kita bisa menggunakan contoh data yang sediakan oleh Veritrans Indonesia.
 
-### 4.7.1 Contoh Data Kartu Kredit
+### 4.8.1 Contoh Data Kartu Kredit
 
 Berikut adalah contoh data kartu kredit yang bisa digunakan untuk melakukan transaksi di Sandbox Veritrans Indonesia.
 
@@ -1088,7 +1191,7 @@ Berikut adalah contoh data kartu kredit yang bisa digunakan untuk melakukan tran
 | 4111111111111111  | accept                   |
 | 4012000033330026  | deny                     |
 
-### 4.7.2 Contoh Data Kartu Kredit 3D Secure
+### 4.8.2 Contoh Data Kartu Kredit 3D Secure
 
 Berikut adalah contoh data kartu kredit 3D secure yang bisa digunakan untuk melakukan transaksi di Sandbox Veritrans Indonesia.
 
@@ -1098,7 +1201,7 @@ Berikut adalah contoh data kartu kredit 3D secure yang bisa digunakan untuk mela
 | 4012000033330026  | ECI 6               |
 | 4444414444444441  | ECI 7               |
 
-### 4.7.3 Contoh Data Fraud Status
+### 4.8.3 Contoh Data Fraud Status
 
 Berikut adalah contoh data ```first_name``` yang bisa digunakan untuk simulasi ```fraud_status``` di Sandbox Veritrans Indonesia.
 
