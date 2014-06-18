@@ -5,7 +5,7 @@
 
 Salah satu yang saya suka dari Veritrans Indonesia adalah mereka memiliki sistem sandbox yang dapat digunakan sebelum kita melakukan transaksi asli, dalam artian kita bisa melakukan transaksi palsu dahulu untuk mencoba apakah integrasi dengan sistem Veritrans Indonesia sudah berjalan dengan baik atau belum. 
 
-Untuk menggunakan sistem sanbox Veritrans Indonesia, kita dapat menggunakannya secara cuma-cuma alias gratis, bahkan tanpa perlu melakukan konfirmasi manual ke pihak Veritrans Indonesia. Untuk mencobanya kita bisa melakukan pendaftaran ke sistem sandbox Veritrans Indonesia di [https://my.sandbox.veritrans.co.id/](https://my.sandbox.veritrans.co.id/)
+Untuk menggunakan sistem sandbox Veritrans Indonesia, kita dapat menggunakannya secara cuma-cuma alias gratis, bahkan tanpa perlu melakukan konfirmasi manual ke pihak Veritrans Indonesia. Untuk mencobanya kita bisa melakukan pendaftaran ke sistem sandbox Veritrans Indonesia di [https://my.sandbox.veritrans.co.id/](https://my.sandbox.veritrans.co.id/)
 
 ## 2.1 Merchant Administration Portal
 
